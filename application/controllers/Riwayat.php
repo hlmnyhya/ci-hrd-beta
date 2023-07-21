@@ -102,7 +102,7 @@ class Riwayat extends CI_Controller {
         $this->load->view('templates/sidebar');
         $this->load->view('Riwayat/v_edit_riwayat', $data);
         $this->load->view('templates/footer');
-		$this->load->view('riwayat/_partials/footer2');
+		$this->load->view('Riwayat/_partials/footer2');
 	}
 
 	public function editRiwayat_proses($id)
