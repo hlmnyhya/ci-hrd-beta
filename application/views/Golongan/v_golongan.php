@@ -8,7 +8,10 @@
             </div>
         </div>
         <div class="row column1">
-            <div class="col-md-12"></div>
+            <div class="col-md-12">
+                  <?php if ($this->session->flashdata('message')): ?>
+                <?= $this->session->flashdata('message') ?>
+                <?php endif; ?>
             <div class="col-md-12">
                 <div class="white_shd full margin_bottom_30">
                     <div class="full graph_head">

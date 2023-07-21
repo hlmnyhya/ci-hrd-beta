@@ -85,6 +85,7 @@ class Riwayat extends CI_Controller {
 
         $this->db->where('id_karyawan', $id_karyawan);
 		$this->db->update('karyawan', $data2);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Riwayat Berhasil Ditambahkan</div>');
         redirect('Riwayat');
 	}
 
@@ -140,6 +141,7 @@ class Riwayat extends CI_Controller {
         
 		$this->db->where('id_riwayat', $id);
 		$this->db->update('riwayat', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Riwayat Berhasil Diubah</div>');
         redirect('Riwayat');
 	}
 

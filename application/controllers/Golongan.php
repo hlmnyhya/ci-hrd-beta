@@ -46,6 +46,7 @@ class Golongan extends CI_Controller {
         );
         
 		$this->db->insert('golongan', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Golongan Berhasil Ditambahkan</div>');
         redirect('Golongan');
 	}
 
@@ -69,6 +70,7 @@ class Golongan extends CI_Controller {
         
 		$this->db->where('id_golongan', $id);
 		$this->db->update('golongan', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Golongan Berhasil Diubah</div>');
         redirect('Golongan');
 	}
 

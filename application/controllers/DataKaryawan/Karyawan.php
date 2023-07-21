@@ -63,6 +63,7 @@ class Karyawan extends CI_Controller {
         );
         
 		$this->db->insert('karyawan', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Karyawan Berhasil Ditambahkan</div>');
         redirect('Karyawan');
 	}
 
@@ -136,6 +137,7 @@ class Karyawan extends CI_Controller {
         
 		$this->db->where('id_karyawan', $id);
 		$this->db->update('karyawan', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Karyawan Berhasil Diubah</div>');
         redirect('karyawan');
 	}
 

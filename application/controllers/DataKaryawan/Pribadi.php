@@ -93,6 +93,7 @@ class Pribadi extends CI_Controller {
         );
 
         $this->M_Karyawan_Pribadi->insert_data('karyawan_pribadi', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pribadi Berhasil Ditambahkan</div>');
         redirect('DataKaryawan/Pribadi/tambah_data_keluarga');
 	}
 
@@ -143,6 +144,7 @@ class Pribadi extends CI_Controller {
 		);
 
 		$this->M_Karyawan_Pribadi->update_data('karyawan_pribadi', $data, $where);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pribadi Berhasil Diubah</div>');
 		redirect('DataKaryawan/Pribadi');
 	}
 
@@ -153,6 +155,7 @@ class Pribadi extends CI_Controller {
 		$where2 = array('id_keluarga' => $id);
 		$table2 = 'keluarga';
 		$this->M_Karyawan_Pribadi->delete_data($where1, $table1, $where2, $table2);
+		$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Pribadi Berhasil Dihapus</div>');
 		redirect('DataKaryawan/Pribadi');
 	}
 
@@ -197,6 +200,7 @@ WHERE id_karyawan_pribadi='$id_karyawan_pribadi'")->result();
 		);
 
 		$this->M_Keluarga->insert_data('keluarga', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Keluarga Berhasil Ditambahkan</div>');
 		redirect('DataKaryawan/Pribadi');
 	}
 
@@ -232,6 +236,7 @@ WHERE id_karyawan_pribadi='$id_karyawan_pribadi'")->result();
 		);
 
 		$this->M_Keluarga->update_data('keluarga', $data, $where);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Keluarga Berhasil Diubah</div>');
 		redirect('DataKaryawan/Keluarga');
 	}
 

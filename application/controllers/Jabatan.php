@@ -46,6 +46,7 @@ class Jabatan extends CI_Controller {
         );
         
 		$this->db->insert('jabatan', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Jabatan Berhasil Ditambah</div>');
         redirect('Jabatan');
 	}
 
@@ -70,12 +71,14 @@ class Jabatan extends CI_Controller {
         
 		$this->db->where('id_jabatan', $id);
 		$this->db->update('jabatan', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Jabatan Berhasil Diubah</div>');
         redirect('Jabatan');
 	}
 
     public function deleteJabatan($id_jabatan)
 	{
 		$this->M_jabatan->delete_data($id_jabatan);
+		$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Riwayat Berhasil Dihapus</div>');
         redirect(base_url('Jabatan'));
 	}
 }
