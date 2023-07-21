@@ -155,6 +155,20 @@ class Pribadi extends CI_Controller {
 		$this->M_Karyawan_Pribadi->delete_data($where1, $table1, $where2, $table2);
 		redirect('DataKaryawan/Pribadi');
 	}
+
+	public function detail($id_karyawan_pribadi)
+	{
+		$data['title'] = 'Detail Data Pribadi Karyawan';
+		$data['karyawan_pribadi'] = $this->db->query("SELECT *
+FROM karyawan_pribadi
+JOIN keluarga ON karyawan_pribadi.keluarga = keluarga.id_keluarga
+WHERE id_karyawan_pribadi='$id_karyawan_pribadi'")->result();
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar');
+		$this->load->view('v_karyawan/pribadi/detailpribadi', $data);
+		$this->load->view('templates/footer');
+		$this->load->view('v_karyawan/pribadi/_partials/footer2');
+	}
 // -------------------------------------------------------------------------------------//
 	
 	public function tambah_data_keluarga()

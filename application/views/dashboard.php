@@ -8,7 +8,7 @@
                                </div>
                            </div>
                        </div>
-                       <div class="row column1">
+                       <!-- <div class="row column1">
                            <div class="col-md-6 col-lg-3">
                                <div class="full counter_section margin_bottom_30">
                                    <div class="couter_icon">
@@ -70,9 +70,9 @@
                                    </div>
                                </div>
                            </div>
-                           </div>
+                           </div> -->
 
-                           <!-- graph -->
+                           <!-- graph
                            <div class="row column2 graph margin_bottom_30">
                                <div class="col-md-l2 col-lg-12">
                                    <div class="white_shd full">
@@ -94,7 +94,7 @@
                                        </div>
                                    </div>
                                </div>
-                           </div>
+                           </div> -->
 
                            <div class="row column3">
                                <div class="col-md-4">

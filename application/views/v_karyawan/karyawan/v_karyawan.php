@@ -46,9 +46,9 @@
                                         <td><?php echo $k->jabatan?></td>
                                         <td><?php echo $k->golongan?></td>
                                         <td>
-                                            <a href="<?php echo base_url('karyawan/editKaryawan/'.$k-> id_karyawan)?>"
+                                            <a href="<?php echo base_url('DataKaryawan/Karyawan/editKaryawan/'.$k-> id_karyawan)?>"
                                                 class="btn icon btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="<?php echo base_url('karyawan/delete/'.$k-> id_karyawan)?>"
+                                            <a href="<?php echo base_url('DataKaryawan/Karyawan/delete/'.$k-> id_karyawan)?>"
                                                 class="btn icon btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
