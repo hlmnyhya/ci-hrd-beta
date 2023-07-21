@@ -60,8 +60,8 @@ function deleteConfirm(url){
                         <td><?= $sm['icon']; ?></td>
                         <td><?= $sm['is_active']; ?></td>
                         <td>
-                            <a class="btn btn-warning" href="<?= site_url('menu/menu/editSubmenu/'.$sm['id']); ?>"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#!" onclick="deleteConfirm('<?php echo site_url('menu/menu/deleteSubmenu/'.$sm['id']) ?>')"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-warning" href="<?= site_url('Menu/Menu/editSubmenu/'.$sm['id']); ?>"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-danger" href="#!" onclick="deleteConfirm('<?php echo site_url('Menu/Menu/deleteSubmenu/'.$sm['id']) ?>')"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     <?php $i++; ?>
@@ -88,7 +88,7 @@ function deleteConfirm(url){
         </button>
       </div>
       <!-- form -->
-      <form action="<?= base_url('menu/menu/submenu'); ?>" method="post">
+      <form action="<?= base_url('Menu/Menu/submenu'); ?>" method="post">
         <div class="modal-body">
             <div class="form-group">
               <input type="text" class="form-control" id="submenu" name="submenu" placeholder="Submenu title">

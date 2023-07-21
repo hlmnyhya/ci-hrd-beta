@@ -9,7 +9,7 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-               <form action="<?php echo base_url('DataPelamar/datapelamar/create'); ?>" method="post" role="form" enctype="multipart/form-data">
+               <form action="<?php echo base_url('DataPelamar/Datapelamar/create'); ?>" method="post" role="form" enctype="multipart/form-data">
     <div class="form-group">
         <input type="hidden" class="form-control col-md-6" name="id_pelamar" id="formGroupExampleInput2" placeholder="">
     </div>
