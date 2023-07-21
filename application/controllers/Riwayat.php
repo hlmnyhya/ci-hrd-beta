@@ -91,11 +91,18 @@ class Riwayat extends CI_Controller {
     public function editRiwayat($id)
 	{
         $data['title'] 	= 'Ubah Data Riwayat';
+        $data['divisi'] 	= $this->M_karyawan->getDivisi()->result();
+		$data['jabatan'] 	= $this->M_karyawan->getJabatan()->result();
+		$data['golongan'] 	= $this->M_karyawan->getGolongan()->result();
+		$data['thl'] 		= $this->M_karyawan->getThl()->result();
+		$data['pribadi'] 	= $this->M_karyawan->getPribadi()->result();
+        $data['karyawan'] 	= $this->M_karyawan->getKaryawan2()->result();
 		$data['riwayat'] = $this->M_riwayat->update_data($id);
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('Riwayat/v_edit_riwayat', $data);
         $this->load->view('templates/footer');
+		$this->load->view('riwayat/_partials/footer2');
 	}
 
 	public function editRiwayat_proses($id)

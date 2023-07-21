@@ -22,16 +22,15 @@
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Tanggal Masuk</label>
-                    <input type="date" class="form-control col-md-6" name="tgl_masuk" id="formGroupExampleInput2" placeholder="" value="<?= $karyawan['tgl_masuk'] ?>">
+                    <input type="date" class="form-control col-md-6" name="tgl_masuk" id="datepicker" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label for="formGroupExampleInput2">Masa Kerja</label>
-                    <input type="date" class="form-control col-md-6" name="masa_kerja" id="formGroupExampleInput2" placeholder="" value="<?= $karyawan['masa_kerja'] ?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Divisi</label>
-                    <select class="form-control col-md-6" aria-label="Default select example" name="divisi">
+                    <label for="masa_kerja">Masa Kerja</label>
+                    <input type="text" class="form-control col-md-6" name="masa_kerja" id="masa_kerja" value="" readonly>
+                </div> 
+                <label for="formGroupExampleInput2">Divisi</label>
+                <div class="form-control">
+                    <select class="form-control col-md-6 select2" aria-label="Default select example" name="divisi">
                         <option selected disabled>Pilih Divisi</option>
                         <?php foreach($divisi as $d) { ?>
                         <option value="<?= $d->id_divisi ?>" <?php if ($karyawan['divisi'] == "$d->id_divisi") echo "selected"; ?>><?= $d->divisi?></option>
@@ -39,9 +38,9 @@
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Jabatan</label>
-                    <select class="form-control col-md-6" aria-label="Default select example" name="jabatan">
+                <label for="formGroupExampleInput2">Jabatan</label>
+                <div class="form-control">
+                    <select class="form-control col-md-6 select2" aria-label="Default select example" name="jabatan">
                         <option selected disabled>Pilih Jabatan</option>
                         <?php foreach($jabatan as $j) { ?>
                         <option value="<?= $j->id_jabatan ?>" <?php if ($karyawan['jabatan'] == "$j->id_jabatan") echo "selected"; ?>><?= $j->jabatan?></option>
@@ -54,9 +53,9 @@
                     <input type="text" class="form-control col-md-6" name="status_terakhir" id="formGroupExampleInput2" placeholder="" value="<?= $karyawan['status_terakhir'] ?>">
                 </div>
 
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Golongan</label>
-                    <select class="form-control col-md-6" aria-label="Default select example" name="golongan">
+                <label for="formGroupExampleInput2">Golongan</label>
+                <div class="form-control">
+                    <select class="form-control col-md-6 select2" aria-label="Default select example" name="golongan">
                         <option selected disabled>Pilih Golongan</option>
                         <?php foreach($golongan as $g) { ?>
                         <option value="<?= $g->id_golongan ?>" <?php if ($karyawan['golongan'] == "$g->id_golongan") echo "selected"; ?>><?= $g->golongan?></option>
@@ -88,7 +87,7 @@
                     <label for="formGroupExampleInput2">Alamat Domisili</label>
                     <input type="text" class="form-control col-md-6" name="alamat_domisili" id="formGroupExampleInput2" placeholder="" value="<?= $karyawan['alamat_domisili'] ?>">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="formGroupExampleInput2">PKWT-Mulai</label>
                     <input type="date" class="form-control col-md-6" name="pkwt_mulai" id="formGroupExampleInput2" placeholder="" value="<?= $karyawan['pkwt_mulai'] ?>">
                 </div>
@@ -136,7 +135,7 @@
                         <option value="<?= $p->id_karyawan_pribadi ?>" <?php if ($karyawan['karyawan_pribadi'] == "$p->id_karyawan_pribadi") echo "selected"; ?>><?= $p->nama?></option>
                         <?php } ?>
                     </select>
-                </div>
+                </div> -->
 
                 <br>
                 <button class="btn btn-primary" type="submit"><i class="fa fa-arrow-circle-right"></i> Simpan</button>
