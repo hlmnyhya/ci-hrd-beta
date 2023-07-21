@@ -24,7 +24,7 @@ class Jabatan extends CI_Controller {
 		$data['jabatan'] = $this->M_jabatan->show_data()->result();
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('jabatan/v_jabatan', $data);
+        $this->load->view('Jabatan/v_jabatan', $data);
         $this->load->view('templates/footer');
 	}
 
@@ -33,7 +33,7 @@ class Jabatan extends CI_Controller {
 		$data['title'] 	= 'Tambah Data Jabatan';
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('jabatan/v_add_jabatan');
+        $this->load->view('Jabatan/v_add_jabatan');
         $this->load->view('templates/footer');
 	}
 
@@ -46,7 +46,7 @@ class Jabatan extends CI_Controller {
         );
         
 		$this->db->insert('jabatan', $data);
-        redirect('jabatan');
+        redirect('Jabatan');
 	}
 
     public function editJabatan($id)
@@ -55,7 +55,7 @@ class Jabatan extends CI_Controller {
 		$data['jabatan'] = $this->M_jabatan->update_data($id);
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('jabatan/v_edit_jabatan', $data);
+        $this->load->view('Jabatan/v_edit_jabatan', $data);
         $this->load->view('templates/footer');
 	}
 
@@ -70,12 +70,12 @@ class Jabatan extends CI_Controller {
         
 		$this->db->where('id_jabatan', $id);
 		$this->db->update('jabatan', $data);
-        redirect('jabatan');
+        redirect('Jabatan');
 	}
 
     public function deleteJabatan($id_jabatan)
 	{
 		$this->M_jabatan->delete_data($id_jabatan);
-        redirect(base_url('jabatan'));
+        redirect(base_url('Jabatan'));
 	}
 }
