@@ -35,15 +35,12 @@ public function update_data($table, $data, $where)
 //     $this->db->delete($table);
 // }
 
-public function delete_data($where1, $table1, $where2, $table2)
-{
-    $this->db->where($where1);
-    $this->db->delete($table1);
-
-    $this->db->where($where2);
-    $this->db->delete($table2);
-}
-
+ public function delete_data($id)
+    {
+        $this->db->where('id_karyawan_pribadi', $id);
+        $this->db->delete('karyawan_pribadi');  
+        return $this->db->affected_rows();
+    }
 
 public function detail_data($id_karyawan_pribadi)
 {

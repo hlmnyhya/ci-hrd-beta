@@ -14,6 +14,15 @@
                     <input type="hidden" class=" form-control col-md-4" name="id_keluarga" id="formGroupExampleInput2"
                         placeholder="">
                 </div>
+                <label for="formGroupExampleInput2">Data Pribadi</label>
+                <div class="form-control" style="max-width: 835px;">
+                    <select class="col-md-6 select2" aria-label="Default select example" name="id_karyawan_pribadi">
+                        <option selected disabled>---- Pilih Data Pribadi ----</option>
+                        <?php foreach($pribadi as $p) { ?>
+                        <option value="<?= $p->id_karyawan_pribadi ?>"><?= $p->nama?></option>
+                        <?php } ?>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Istri dari Suami</label>
                     <input type="text" class="form-control col-md-6" name="istri_suami" id="formGroupExampleInput2" placeholder="">

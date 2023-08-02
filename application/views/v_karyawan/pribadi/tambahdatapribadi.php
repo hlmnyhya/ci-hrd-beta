@@ -80,10 +80,6 @@
                         <option value="O">O</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Keluarga</label>
-                    <input type="text" class="form-control col-md-6" name="keluarga" id="formGroupExampleInput2" placeholder="">
-                </div>
                         <br>
                         <td>
                             <a href="<?php echo base_url('DataKaryawan/pribadi')?>"><button
