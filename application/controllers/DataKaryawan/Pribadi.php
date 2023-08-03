@@ -148,7 +148,7 @@ class Pribadi extends CI_Controller {
        k.`id_keluarga`, k.`istri_suami`, k.`anak1`, k.`anak2`, k.`anak3`
 FROM `karyawan_pribadi` AS kp
 JOIN `keluarga` AS k ON kp.`id_karyawan_pribadi` = k.`id_karyawan_pribadi`
-WHERE '$id_karyawan_pribadi'
+WHERE '$id_karyawan_pribadi LIMIT 1'
 ")->result();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
