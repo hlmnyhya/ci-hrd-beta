@@ -196,7 +196,7 @@ WHERE id_karyawan_pribadi='$id_karyawan_pribadi'")->result();
 		$data['keluarga'] = $this->db->query("SELECT * FROM keluarga WHERE id_keluarga = '$id'")->result();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
-		$this->load->view('master/keluarga/editdatakeluarga', $data);
+		$this->load->view('Master/Keluarga/editdatakeluarga', $data);
 		$this->load->view('templates/footer');
 	}
 
