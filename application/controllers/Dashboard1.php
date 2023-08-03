@@ -43,7 +43,7 @@ class Dashboard1 extends CI_Controller {
 
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
-        $this->load->view('dashboard', $data);
+        $this->load->view('dashboard1', $data);
         $this->load->view('templates/footer');
 	}
 }
