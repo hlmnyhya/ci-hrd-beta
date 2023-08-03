@@ -20,7 +20,7 @@
                             <td><a href="<?php echo base_url('DataKaryawan/Karyawan/addKaryawan')?>" class="btn icon btn-primary">
                                     <i class="fa fa-plus"></i> Tambah Data
                                 </a>
-                                        </td>
+                                </td>
                         </div>
                     </div>
                     <div class="table_section padding_infor_info">

@@ -8,6 +8,17 @@ public function show_data()
     return $this->db->query('SELECT * FROM karyawan_pribadi');
 }
 
+public function get_data_by_last()
+{
+    return $this->db->select('id_karyawan_pribadi, nama')
+                    ->from('karyawan_pribadi')
+                    ->order_by('id_karyawan_pribadi', 'DESC')
+                    ->limit(1)
+                    ->get()
+                    ->result();
+}
+
+
 public function count_data()
 {
     return $this->db->count_all('karyawan_pribadi'); // Gantikan 'nama_tabel' dengan nama tabel yang sesuai

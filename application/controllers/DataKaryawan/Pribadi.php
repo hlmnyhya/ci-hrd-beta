@@ -157,15 +157,16 @@ WHERE '$id_karyawan_pribadi LIMIT 1'
 	}
 // -------------------------------------------------------------------------------------//
 	
-	public function tambah_data_keluarga()
-	{
-		$data['title'] = 'Tambah Data Keluarga Karyawan';
-		$data['pribadi'] = $this->M_Karyawan_Pribadi->show_data()->result();
-		$this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar');
-        $this->load->view('Master/Keluarga/tambahdatakeluarga', $data);
-        $this->load->view('templates/footer');
-	}
+public function tambah_data_keluarga()
+{
+    $data['title'] = 'Tambah Data Keluarga Karyawan';
+    $data['pribadi'] = $this->M_Karyawan_Pribadi->get_data_by_last(); // No need to wrap in an array
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar');
+    $this->load->view('Master/Keluarga/tambahdatakeluarga', $data);
+    $this->load->view('templates/footer');
+}
+
 
 	public function create_keluarga()
 	{

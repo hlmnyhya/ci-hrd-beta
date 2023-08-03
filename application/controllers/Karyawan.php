@@ -24,7 +24,7 @@ class Karyawan extends CI_Controller {
 		$data['karyawan'] = $this->M_karyawan->show_data()->result();
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('karyawan/v_karyawan', $data);
+        $this->load->view('v_karyawan/karyawan/v_karyawan', $data);
         $this->load->view('templates/footer');
 	}
 
@@ -37,12 +37,13 @@ class Karyawan extends CI_Controller {
 		$data['pribadi'] 	= $this->M_karyawan->getPribadi()->result();
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('karyawan/v_add_karyawan', $data);
+        $this->load->view('v_karyawan/karyawan/v_add_karyawan', $data);
         $this->load->view('templates/footer');
 	}
 
 	public function addKaryawan_proses()
 	{
+		$id_karyawan 		= $this->input->post('id_karyawan');
 		$nama 				= $this->input->post('nama');
 		$tgl_masuk 			= $this->input->post('tgl_masuk');
 		$masa_kerja 		= $this->input->post('masa_kerja');
@@ -56,9 +57,9 @@ class Karyawan extends CI_Controller {
 		$status_ptkp 		= $this->input->post('status_ptkp');
 		$alamat_ktp 		= $this->input->post('alamat_ktp');
 		$alamat_domisili 	= $this->input->post('alamat_domisili');
-		$karyawan_pribadi 	= $this->input->post('karyawan_pribadi');
 
 		$data = array(
+			'id_karyawan' 		=> $id_karyawan,
 			'nama' 				=> $nama,
 			'tgl_masuk'			=> $tgl_masuk,
 			'masa_kerja' 		=> $masa_kerja,
@@ -72,7 +73,6 @@ class Karyawan extends CI_Controller {
 			'status_ptkp' 		=> $status_ptkp,
 			'alamat_ktp'		=> $alamat_ktp,
 			'alamat_domisili' 	=> $alamat_domisili,
-			'karyawan_pribadi' 	=> $karyawan_pribadi,
         );
         
 		$this->db->insert('karyawan', $data);
@@ -91,7 +91,7 @@ class Karyawan extends CI_Controller {
 		$data['karyawan'] 	= $this->M_karyawan->update_data($id);
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('karyawan/v_edit_karyawan', $data);
+        $this->load->view('v_karyawan/karyawan/v_edit_karyawan', $data);
         $this->load->view('templates/footer');
 		$this->load->view('karyawan/_partials/footer2');
 	}
@@ -120,7 +120,6 @@ class Karyawan extends CI_Controller {
 		$thl 				= $this->input->post('thl');
 		$percobaan_mulai 	= $this->input->post('percobaan_mulai');
 		$percobaan_selesai 	= $this->input->post('percobaan_selesai');
-		$karyawan_pribadi 	= $this->input->post('karyawan_pribadi');
 
 		$data = array(
 			'nama' 				=> $nama,
@@ -145,7 +144,6 @@ class Karyawan extends CI_Controller {
 			'percobaan_mulai'	=> $percobaan_mulai,
 			'percobaan_selesai' => $percobaan_selesai,
 			'percobaan_selesai'	=> $percobaan_selesai,
-			'karyawan_pribadi' 	=> $karyawan_pribadi,
         );
         
 		$this->db->where('id_karyawan', $id);
