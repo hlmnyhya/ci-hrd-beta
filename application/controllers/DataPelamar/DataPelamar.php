@@ -51,53 +51,71 @@ class DataPelamar extends CI_Controller {
 	public function tambah_data_pelamar()
 	{
 		$data['title'] = 'Tambah Data Pelamar';
+		$data['perusahaan'] = $this->M_perusahaan->getDataPerusahaan();
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('v_karyawan/pelamar/tambahdatapelamar');
+        $this->load->view('v_karyawan/pelamar/tambahdatapelamar', $data);
         $this->load->view('templates/footer');
 	}
 
-public function create()
-{
-     	$config['upload_path'] = './assets/uploads/pelamar/';
-        $config['allowed_types'] = 'gif|jpg|png|PNG|pdf';
-        $config['max_size'] = 10000;
-        $config['max_width'] = 10000;
-        $config['max_height'] = 10000;
-
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('file')) {
-            echo "Gagal Tambah";
-        } else {
-            $file = $this->upload->data('file_name');
-		    $id = $this->input->post('id_pelamar');
-    		$nama = $this->input->post('nama');
-    		$alamat = $this->input->post('alamat');
-    		$tanggal_lahir = $this->input->post('tanggal_lahir');
-    		$jenis_kelamin = $this->input->post('jenis_kelamin');
-    		$no_telp = $this->input->post('no_telp');
-    		$email = $this->input->post('email');
-    		$created_at = date('Y-m-d');
-
-			$data = array(
-				'id_pelamar' => $id,
-				'nama' => $nama,
-				'alamat' => $alamat,
-				'tanggal_lahir' => $tanggal_lahir,
-				'jenis_kelamin' => $jenis_kelamin,
-				'no_telp' => $no_telp,
-				'email' => $email,
-				'file' => $file,
-				'created_at' => $created_at
-			);
-
-
-            $this->M_Pelamar->insert_data('pelamar', $data);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pelamar Berhasil Ditambahkan</div>');
-            redirect('DataPelamar/DataPelamar');
+	public function getDivisi()
+    {
+        $idperusahaan = $this->input->post('id_perusahaan');
+        $data = $this->M_perusahaan->getDataDivisi($idperusahaan);
+        $output = '<option value="">--Pilih Divisi-- </option>';
+        foreach ($data as $row) {
+            $output .= '<option value="' . $row->id_divisi . '"> ' . $row->divisi . '</option>';
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode($output));
     }
-}
+
+	public function create()
+	{
+			$config['upload_path'] = './assets/uploads/pelamar/';
+			$config['allowed_types'] = 'gif|jpg|png|PNG|pdf';
+			$config['max_size'] = 10000;
+			$config['max_width'] = 10000;
+			$config['max_height'] = 10000;
+
+			$this->load->library('upload', $config);
+
+			if (!$this->upload->do_upload('file')) {
+				echo "Gagal Tambah";
+			} else {
+				$file = $this->upload->data('file_name');
+				$id = $this->input->post('id_pelamar');
+				$nama = $this->input->post('nama');
+				$alamat = $this->input->post('alamat');
+				$tanggal_lahir = $this->input->post('tanggal_lahir');
+				$jenis_kelamin = $this->input->post('jenis_kelamin');
+				$no_telp = $this->input->post('no_telp');
+				$email = $this->input->post('email');
+				$perusahaan = $this->input->post('perusahaan');
+				$divisi = $this->input->post('divisi');
+				$jabatan = $this->input->post('jabatan');
+				$created_at = date('Y-m-d');
+
+				$data = array(
+					'id_pelamar' => $id,
+					'nama' => $nama,
+					'alamat' => $alamat,
+					'tanggal_lahir' => $tanggal_lahir,
+					'jenis_kelamin' => $jenis_kelamin,
+					'no_telp' => $no_telp,
+					'email' => $email,
+					'perusahaan' => $perusahaan,
+					'divisi' => $divisi,
+					'jabatan' => $jabatan,
+					'file' => $file,
+					'created_at' => $created_at
+				);
+
+
+				$this->M_Pelamar->insert_data('pelamar', $data);
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pelamar Berhasil Ditambahkan</div>');
+				redirect('DataPelamar/DataPelamar');
+		}
+	}
 
 	public function edit($id)
 	{
@@ -119,6 +137,9 @@ public function create()
     $jenis_kelamin = $this->input->post('jenis_kelamin');
     $no_telp = $this->input->post('no_telp');
     $email = $this->input->post('email');
+	$perusahaan = $this->input->post('perusahaan');
+	$divisi = $this->input->post('divisi');
+	$jabatan = $this->input->post('jabatan');
 
     // Cek apakah ada file yang diunggah
     if ($_FILES['file']['name'] != '') {
@@ -152,6 +173,9 @@ public function create()
         'jenis_kelamin' => $jenis_kelamin,
         'no_telp' => $no_telp,
         'email' => $email,
+		'perusahaan' => $perusahaan,
+		'divisi' => $divisi,
+		'jabatan' => $jabatan,
         'file' => $file
     );
 

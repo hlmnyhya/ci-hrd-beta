@@ -19,6 +19,16 @@
                     <input type="text" class="form-control col-md-6" name="jabatan" id="formGroupExampleInput2" placeholder="">
                 </div>
 
+				<div class="form-group">
+                    <label for="formGroupExampleInput2">Divisi</label>
+                    <select class="form-control col-md-6" name="id_divisi" require="true">
+                        <option selected disabled>--Pilih Divisi--</option>
+						<?php foreach($divisi as $d) : ?>
+							<option value="<?= $d->id_divisi ?>"><?= $d->divisi ?></option>
+						<?php endforeach ?>
+                    </select>
+                </div>
+
                 <br>
                 <button class="btn btn-primary" type="submit"><i class="fa fa-arrow-circle-right"></i> Simpan</button>
             </form>

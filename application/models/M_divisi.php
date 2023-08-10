@@ -1,13 +1,12 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
     
-class M_jabatan extends CI_Model{
+class M_divisi extends CI_Model{
     
-	public function show_data()
+    public function show_data()
     {
         $this->db->select('*');
-        $this->db->from('jabatan', 'divisi');
-        $this->db->join('divisi','divisi.id_divisi = jabatan.id_divisi');
+        $this->db->from('divisi');
 		$this->db->join('perusahaan','perusahaan.id_perusahaan = divisi.id_perusahaan');
         $query = $this->db->get();
         return $query;
@@ -24,18 +23,18 @@ class M_jabatan extends CI_Model{
 
     public function update_data($id)
     {
-        return $this->db->get_where('jabatan', ['id_jabatan' => $id])->row_array();
+        return $this->db->get_where('divisi', ['id_divisi' => $id])->row_array();
     }
         
-    public function delete_data($id_jabatan)
+    public function delete_data($id_divisi)
     {
-        $this->db->where('id_jabatan', $id_jabatan);
-        return $this->db->delete('jabatan');
+        $this->db->where('id_divisi', $id_divisi);
+        return $this->db->delete('divisi');
     }
 
-    public function detail_data($id_jabatan = NULL)
+    public function detail_data($id_divisi = NULL)
     {
-        $query = $this->db->get_where('jabatan',array('id_jabatan'=> $id_jabatan))->row();
+        $query = $this->db->get_where('divisi',array('id_divisi'=> $id_divisi))->row();
         return $query;
     }
 }
