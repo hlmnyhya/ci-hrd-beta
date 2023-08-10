@@ -21,25 +21,7 @@ class Pribadi extends CI_Controller {
 	
 	public function index()
 {
-    $config['base_url'] = base_url('DataKaryawan/Pribadi/index');
-    $config['total_rows'] = $this->M_Karyawan_Pribadi->count_data();
-    $config['per_page'] = 4;
-    $config['uri_segment'] = 3;
-
-    $this->load->library('pagination');
-    $this->pagination->initialize($config);
-
-    $offset = $this->uri->segment(4) ? $this->uri->segment(4) : 0;
-    $data['pribadi'] = $this->M_Karyawan_Pribadi->get_data($config['per_page'], $offset)->result();
-    $data['pagination'] = $this->pagination->create_links();
-
-    // Periksa apakah properti nomor_halaman ada dalam data pribadi
-    $data['pribadi_with_pagination'] = [];
-    foreach ($data['pribadi'] as $p) {
-        $p->nomor_halaman = $offset; // Menggunakan offset sebagai nomor halaman
-        $data['pribadi_with_pagination'][] = $p;
-        $offset++;
-    }
+    $data['pribadi'] = $this->M_Karyawan_Pribadi->show_data()->result();
 
     $data['title'] = 'Data Pribadi Karyawan';
     $data['keluarga'] = $this->M_Keluarga->show_data()->result();
@@ -75,7 +57,6 @@ class Pribadi extends CI_Controller {
 		$tanggal_lahir = $this->input->post('tanggal_lahir');
 		$usia = $this->input->post('usia');
 		$goldar = $this->input->post('golongan_darah');
-		$keluarga = $this->input->post('keluarga');
 
         $data = array(
 			'id_karyawan_pribadi' => $id,
@@ -89,10 +70,10 @@ class Pribadi extends CI_Controller {
 			'tanggal_lahir' => $tanggal_lahir,
 			'usia' => $usia,
 			'golongan_darah' => $goldar,
-			'keluarga' => $keluarga
         );
 
         $this->M_Karyawan_Pribadi->insert_data('karyawan_pribadi', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pribadi Berhasil Ditambahkan</div>');
         redirect('DataKaryawan/Pribadi/tambah_data_keluarga');
 	}
 
@@ -121,7 +102,6 @@ class Pribadi extends CI_Controller {
 		$tanggal_lahir = $this->input->post('tanggal_lahir');
 		$usia = $this->input->post('usia');
 		$goldar = $this->input->post('golongan_darah');
-		$keluarga = $this->input->post('keluarga');
 
 		$data = array(
 			'id_karyawan_pribadi' => $id,
@@ -135,7 +115,6 @@ class Pribadi extends CI_Controller {
 			'tanggal_lahir' => $tanggal_lahir,
 			'usia' => $usia,
 			'golongan_darah' => $goldar,
-			'keluarga' => $keluarga
 		);
 
 		$where = array(
@@ -143,32 +122,56 @@ class Pribadi extends CI_Controller {
 		);
 
 		$this->M_Karyawan_Pribadi->update_data('karyawan_pribadi', $data, $where);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pribadi Berhasil Diubah</div>');
 		redirect('DataKaryawan/Pribadi');
 	}
 
-	public function delete_data($id = NULL)
+	   public function delete_data($id_karyawan_pribadi)
 	{
-		$where1 = array('id_karyawan_pribadi' => $id);
-		$table1 = 'karyawan_pribadi';
-		$where2 = array('id_keluarga' => $id);
-		$table2 = 'keluarga';
-		$this->M_Karyawan_Pribadi->delete_data($where1, $table1, $where2, $table2);
-		redirect('DataKaryawan/Pribadi');
+		$this->M_Karyawan_Pribadi->delete_data($id_karyawan_pribadi);
+        redirect('DataKaryawan/Pribadi');
+	}
+
+	// public function delete_data($id = NULL)
+	// {
+	// 	$where = array('id_karyawan_pribadi' => $id);
+	// 	$table = 'karyawan_pribadi';
+	// 	$this->M_Karyawan_Pribadi->delete_data($where, $table);
+	// 	$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Pribadi & Keluarga Berhasil Dihapus</div>');
+	// 	redirect('DataKaryawan/Pribadi');
+	// }
+
+	public function detail($id_karyawan_pribadi)
+	{
+		$data['title'] = 'Detail Data Pribadi Karyawan';
+		$data['karyawan_pribadi'] = $this->db->query("SELECT kp.`id_karyawan_pribadi`, kp.`nama`, kp.`alamat_ktp`, kp.`alamat_domisili`, kp.`agama`, kp.`jenis_kelamin`, kp.`pendidikan`, kp.`jurusan`, kp.`tanggal_lahir`, kp.`usia`, kp.`golongan_darah`, k.`id_keluarga`, k.`istri_suami`, k.`anak1`, k.`anak2`, k.`anak3`
+FROM `karyawan_pribadi` AS kp
+JOIN `keluarga` AS k ON kp.`id_karyawan_pribadi` = k.`id_karyawan_pribadi`
+WHERE '$id_karyawan_pribadi LIMIT 1'
+")->result();
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar');
+		$this->load->view('v_karyawan/pribadi/detailpribadi', $data);
+		$this->load->view('templates/footer');
+		$this->load->view('v_karyawan/pribadi/_partials/footer2');
 	}
 // -------------------------------------------------------------------------------------//
 	
-	public function tambah_data_keluarga()
-	{
-		$data['title'] = 'Tambah Data Keluarga Karyawan';
-		$this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar');
-        $this->load->view('Master/Keluarga/tambahdatakeluarga');
-        $this->load->view('templates/footer');
-	}
+public function tambah_data_keluarga()
+{
+    $data['title'] = 'Tambah Data Keluarga Karyawan';
+    $data['pribadi'] = $this->M_Karyawan_Pribadi->get_data_by_last(); // No need to wrap in an array
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar');
+    $this->load->view('Master/Keluarga/tambahdatakeluarga', $data);
+    $this->load->view('templates/footer');
+}
+
 
 	public function create_keluarga()
 	{
 		$id = $this->input->post('id_keluarga');
+		$id_karyawan_pribadi = $this->input->post('id_karyawan_pribadi');
 		$istri = $this->input->post('istri_suami');
 		$anak1 = $this->input->post('anak1');
 		$anak2 = $this->input->post('anak2');
@@ -176,6 +179,7 @@ class Pribadi extends CI_Controller {
 
 		$data = array(
 			'id_keluarga' => $id,
+			'id_karyawan_pribadi' => $id_karyawan_pribadi,
 			'istri_suami' => $istri,
 			'anak1' => $anak1,
 			'anak2' => $anak2,
@@ -183,6 +187,7 @@ class Pribadi extends CI_Controller {
 		);
 
 		$this->M_Keluarga->insert_data('keluarga', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pribadi & Keluarga Berhasil Ditambahkan</div>');
 		redirect('DataKaryawan/Pribadi');
 	}
 
@@ -193,13 +198,14 @@ class Pribadi extends CI_Controller {
 		$data['keluarga'] = $this->db->query("SELECT * FROM keluarga WHERE id_keluarga = '$id'")->result();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
-		$this->load->view('master/keluarga/editdatakeluarga', $data);
+		$this->load->view('Master/Keluarga/editdatakeluarga', $data);
 		$this->load->view('templates/footer');
 	}
 
 	public function edit_data_keluarga()
 	{
 		$id = $this->input->post('id_keluarga');
+		$id_karyawan_pribadi = $this->input->post('id_karyawan_pribadi');
 		$istri = $this->input->post('istri_suami');
 		$anak1 = $this->input->post('anak1');
 		$anak2 = $this->input->post('anak2');
@@ -207,6 +213,7 @@ class Pribadi extends CI_Controller {
 
 		$data = array(
 			'id_keluarga' => $id,
+			'id_karyawan_pribadi' => $id_karyawan_pribadi,
 			'istri_suami' => $istri,
 			'anak1' => $anak1,
 			'anak2' => $anak2,
@@ -218,6 +225,7 @@ class Pribadi extends CI_Controller {
 		);
 
 		$this->M_Keluarga->update_data('keluarga', $data, $where);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Keluarga Berhasil Diubah</div>');
 		redirect('DataKaryawan/Keluarga');
 	}
 
@@ -225,6 +233,7 @@ class Pribadi extends CI_Controller {
 	{
 		$where = array('id_keluarga' => $id);
 		$this->M_Keluarga->delete_data($where, 'keluarga');
+		$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Keluarga Berhasil Dihapus</div>');
 		redirect('DataKaryawan/Keluarga');
 	}
 

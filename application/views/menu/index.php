@@ -48,8 +48,8 @@ function deleteConfirm(url){
                         <th scope="row"><?= $i ?></th>
                         <td><?= $m['menu']; ?></td>
                         <td>
-                            <a class="btn btn-warning" href="<?= site_url('menu/menu/editMenu/'.$m['id']); ?>"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#!" onclick="deleteConfirm('<?php echo site_url('menu/menu/deleteMenu/'.$m['id']) ?>')"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-warning" href="<?= site_url('Menu/Menu/editMenu/'.$m['id']); ?>"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-danger" href="#!" onclick="deleteConfirm('<?php echo site_url('Menu/Menu/deleteMenu/'.$m['id']) ?>')"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     <?php $i++; ?>

@@ -8,7 +8,10 @@
             </div>
         </div>
         <div class="row column1">
-            <div class="col-md-12"></div>
+            <div class="col-md-12">
+                <?php if ($this->session->flashdata('message')): ?>
+                <?= $this->session->flashdata('message') ?>
+                <?php endif; ?>
             <div class="col-md-12">
                 <div class="white_shd full margin_bottom_30">
                     <div class="full graph_head">
@@ -26,6 +29,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Jabatan</th>
+										<th>Divisi</th>
+										<th>Perusahaan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -34,6 +39,8 @@
                                     <tr>
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $j->jabatan?></td>
+										<td><?php echo $j->divisi?></td>
+										<td><?php echo $j->perusahaan?></td>
                                         <td>
                                             <a href="<?php echo base_url('jabatan/editJabatan/'.$j-> id_jabatan)?>"
                                                 class="btn icon btn-warning"><i class="fa fa-edit"></i></a>

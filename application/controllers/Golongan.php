@@ -24,7 +24,7 @@ class Golongan extends CI_Controller {
 		$data['golongan'] = $this->M_golongan->show_data()->result();
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('golongan/v_golongan', $data);
+        $this->load->view('Golongan/v_golongan', $data);
         $this->load->view('templates/footer');
 	}
 
@@ -33,7 +33,7 @@ class Golongan extends CI_Controller {
 		$data['title'] 		= 'Tambah Data golongan';
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('golongan/v_add_golongan');
+        $this->load->view('Golongan/v_add_golongan');
         $this->load->view('templates/footer');
 	}
 
@@ -46,7 +46,8 @@ class Golongan extends CI_Controller {
         );
         
 		$this->db->insert('golongan', $data);
-        redirect('golongan');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Golongan Berhasil Ditambahkan</div>');
+        redirect('Golongan');
 	}
 
     public function editgolongan($id)
@@ -54,7 +55,7 @@ class Golongan extends CI_Controller {
 		$data['golongan'] 	= $this->M_golongan->update_data($id);
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('golongan/v_edit_golongan', $data);
+        $this->load->view('Golongan/v_edit_golongan', $data);
         $this->load->view('templates/footer');
 	}
 
@@ -69,12 +70,13 @@ class Golongan extends CI_Controller {
         
 		$this->db->where('id_golongan', $id);
 		$this->db->update('golongan', $data);
-        redirect('golongan');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Golongan Berhasil Diubah</div>');
+        redirect('Golongan');
 	}
 
     public function deletegolongan($id_golongan)
 	{
 		$this->M_golongan->delete_data($id_golongan);
-        redirect(base_url('golongan'));
+        redirect(base_url('Golongan'));
 	}
 }

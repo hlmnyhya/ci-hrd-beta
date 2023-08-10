@@ -26,7 +26,7 @@ public function delete_data($where,$table)
 }
 public function detail_data($id_karyawan_pribadi = NULL)
 {
-    $query = $this->db->get_where('karyawan_peribadi',array('id_karyawan_pribadi'=> $id_karyawan_pribadi))->row();
+    $query = $this->db->get_where('karyawan_pribadi',array('id_karyawan_pribadi'=> $id_karyawan_pribadi))->row();
     return $query;
 }
 

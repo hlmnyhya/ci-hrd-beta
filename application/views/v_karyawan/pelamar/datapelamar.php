@@ -45,13 +45,13 @@
                                                 <div class="bottom_list">
                                                     <div class="right_button">
                                                         <td>
-                                                            <a href="<?php echo base_url('DataPelamar/datapelamar/detail/'.$p->id_pelamar)?>" class="btn icon btn-primary">
-                                                                <i class="fa fa-user"></i> Detail
+                                                            <!-- <a href="<?php echo base_url('DataPelamar/DataPelamar/detail/'.$p->id_pelamar)?>" class="btn icon btn-primary">
+                                                                <i class="fa fa-user"></i> Detail -->
                                                             </a>
-                                                            <a href="<?php echo base_url('DataPelamar/datapelamar/edit/'.$p->id_pelamar)?>" class="btn icon btn-warning">
+                                                            <a href="<?php echo base_url('DataPelamar/DataPelamar/edit/'.$p->id_pelamar)?>" class="btn icon btn-warning"
                                                                 <i class="fa fa-edit"></i> Edit Data Pelamar
                                                             </a>
-                                                            <a href="<?php echo base_url('DataPelamar/datapelamar/delete/'.$p->id_pelamar)?>" class="btn icon btn-danger">
+                                                            <a href="<?php echo base_url('DataPelamar/DataPelamar/delete/'.$p->id_pelamar)?>" class="btn icon btn-danger">
                                                                 <i class="fa fa-trash"></i> Hapus
                                                             </a>
                                                         </td>

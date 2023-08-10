@@ -8,7 +8,10 @@
             </div>
         </div>
         <div class="row column1">
-            <div class="col-md-12"></div>
+            <div class="col-md-12">
+                  <?php if ($this->session->flashdata('message')): ?>
+                <?= $this->session->flashdata('message') ?>
+                <?php endif; ?>
             <div class="col-md-12">
                 <div class="white_shd full margin_bottom_30">
                     <div class="full graph_head">
@@ -43,9 +46,9 @@
                                         <td><?php echo $r->golongan?></td>
                                         <td><?php echo $r->status?></td>
                                         <td>
-                                            <a href="<?php echo base_url('riwayat/editriwayat/'.$r-> id_riwayat)?>"
+                                            <a href="<?php echo base_url('Riwayat/editRiwayat/'.$r->id_karyawan) ?>"
                                                 class="btn icon btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="<?php echo base_url('riwayat/deleteriwayat/'.$r-> id_riwayat)?>"
+                                            <a href="<?php echo base_url('Riwayat/deleteRiwayat/'.$r->id_karyawan)?>"
                                                 class="btn icon btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>

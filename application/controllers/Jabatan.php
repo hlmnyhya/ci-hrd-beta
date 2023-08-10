@@ -20,62 +20,75 @@ class Jabatan extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['title'] = 'Data Jabatan';
-		$data['jabatan'] = $this->M_jabatan->show_data()->result();
+		$data['title'] 		= 'Data Jabatan';
+		$data['jabatan'] 	= $this->M_jabatan->show_data()->result();
+
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('jabatan/v_jabatan', $data);
+        $this->load->view('Jabatan/v_jabatan', $data);
         $this->load->view('templates/footer');
 	}
 
     public function addJabatan()
 	{
-		$data['title'] 	= 'Tambah Data Jabatan';
+		$data['title'] 		= 'Tambah Data Jabatan';
+		$data['divisi'] 	= $this->M_divisi->show_data()->result();
+		$data['perusahaan'] = $this->M_perusahaan->show_data()->result();
+
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('jabatan/v_add_jabatan');
+        $this->load->view('Jabatan/v_add_jabatan', $data);
         $this->load->view('templates/footer');
 	}
 
 	public function addJabatan_proses()
 	{
 		$jabatan = $this->input->post('jabatan');
+		$id_divisi = $this->input->post('id_divisi');
 
 		$data = array(
+			'id_divisi' => $id_divisi,
 			'jabatan' => $jabatan,
         );
         
 		$this->db->insert('jabatan', $data);
-        redirect('jabatan');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Jabatan Berhasil Ditambah</div>');
+        redirect('Jabatan');
 	}
 
     public function editJabatan($id)
 	{
-        $data['title'] 	= 'Ubah Data Jabatan';
-		$data['jabatan'] = $this->M_jabatan->update_data($id);
+        $data['title'] 		= 'Ubah Data Jabatan';
+		$data['jabatan'] 	= $this->M_jabatan->update_data($id);
+		$data['divisi'] 	= $this->M_divisi->show_data()->result();
+		$data['perusahaan'] = $this->M_perusahaan->show_data()->result();
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('jabatan/v_edit_jabatan', $data);
+        $this->load->view('Jabatan/v_edit_jabatan', $data);
         $this->load->view('templates/footer');
 	}
 
 	public function editJabatan_proses($id)
 	{
 		$id			= $this->input->post('id_jabatan');
-		$jabatan 	= $this->input->post('jabatan');
+		$jabatan = $this->input->post('jabatan');
+		$id_divisi = $this->input->post('id_divisi');
 
 		$data = array(
-			'jabatan' 	=> $jabatan,
+			'id_divisi' => $id_divisi,
+			'jabatan' => $jabatan,
         );
         
 		$this->db->where('id_jabatan', $id);
 		$this->db->update('jabatan', $data);
-        redirect('jabatan');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Jabatan Berhasil Diubah</div>');
+        redirect('Jabatan');
 	}
 
     public function deleteJabatan($id_jabatan)
 	{
 		$this->M_jabatan->delete_data($id_jabatan);
-        redirect(base_url('jabatan'));
+		$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Riwayat Berhasil Dihapus</div>');
+        redirect(base_url('Jabatan'));
 	}
 }

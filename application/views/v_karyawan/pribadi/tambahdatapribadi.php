@@ -50,8 +50,12 @@
                     <label for="formGroupExampleInput2">Pendidikan</label>
                     <select class="form-control col-md-6" name="pendidikan" require="true">
                         <option selected disabled>--Pilih Pendidikan--</option>
-                        <option value="SMA/SLTA Sederajat">SMA/SLTA Sederajat</option>
+                        <option value="SD Sederajat">SD Sederajat</option>
+                        <option value="SMP/SLTP Sederajat">SMP/SLTP Sederajat</option>
+                        <option value="SMA/SMK/SLTA Sederajat">SMA/SMK/SLTA Sederajat</option>
                         <option value="D3">D3</option>
+                        <option value="D2">D2</option>
+                        <option value="D1">D1</option>
                         <option value="S1">S1</option>
                         <option value="S2">S2</option>
                         <option value="S3">S3</option>
@@ -79,10 +83,6 @@
                         <option value="AB">AB</option>
                         <option value="O">O</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Keluarga</label>
-                    <input type="text" class="form-control col-md-6" name="keluarga" id="formGroupExampleInput2" placeholder="">
                 </div>
                         <br>
                         <td>

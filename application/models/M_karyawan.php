@@ -7,7 +7,6 @@ class M_karyawan extends CI_Model{
     {
         $this->db->select('*');
         $this->db->from('karyawan');
-        $this->db->join('karyawan_pribadi','karyawan_pribadi.id_karyawan_pribadi = karyawan.karyawan_pribadi');
         $this->db->join('golongan','golongan.id_golongan = karyawan.golongan');
         $this->db->join('jabatan','jabatan.id_jabatan = karyawan.jabatan');
         $this->db->join('divisi','divisi.id_divisi = karyawan.divisi');
@@ -18,7 +17,7 @@ class M_karyawan extends CI_Model{
     public function get_data($table){
         return $this->db->get($table);
     }
-    
+  
     public function insert_data($table, $data)
     {
         $this->db->insert($table, $data);
