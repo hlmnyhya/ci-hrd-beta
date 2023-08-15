@@ -16,6 +16,9 @@
                 <div class="form-group">
                     <input type="hidden" class=" form-control col-md-6" name="id_karyawan" id="formGroupExampleInput2"
                         placeholder="">
+                    </div>
+                <div class="form-group">
+                    <input type="hidden" class="form-control col-md-6" name="id_perusahaan" id="formGroupExampleInput2" placeholder="" value="<?php echo $this->session->userdata('id_perusahaan'); ?>">
                 </div>
                 <label for="formGroupExampleInput2">Nama</label>
                 <div class="form-control" style="width: 835px;">

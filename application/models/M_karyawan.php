@@ -40,40 +40,41 @@ class M_karyawan extends CI_Model{
         return $query;
     }
 
-    public function getKaryawan()
-    {
-        return $this->db->query('SELECT * FROM karyawan_pribadi');
-    }
+   public function getKaryawan($id_perusahaan)
+{
+    return $this->db->query('SELECT * FROM karyawan_pribadi WHERE id_perusahaan = ?', array($id_perusahaan));
+}
 
-    public function getKaryawan2()
-    {
-        return $this->db->query('SELECT * FROM karyawan');
-    }
+public function getKaryawan2($id_perusahaan)
+{
+    return $this->db->query('SELECT * FROM karyawan WHERE id_perusahaan = ?', array($id_perusahaan));
+}
 
-    public function getDivisi()
-    {
-        return $this->db->query('SELECT * FROM divisi');
-    }
+public function getDivisi($id_perusahaan)
+{
+    return $this->db->query('SELECT * FROM divisi WHERE id_perusahaan = ?', array($id_perusahaan));
+}
 
-    public function getJabatan()
-    {
-        return $this->db->query('SELECT * FROM jabatan');
-    }
+public function getJabatan($id_perusahaan)
+{
+    return $this->db->query('SELECT * FROM jabatan WHERE id_perusahaan = ?', array($id_perusahaan));
+}
 
-    public function getGolongan()
-    {
-        return $this->db->query('SELECT * FROM golongan');
-    }
+public function getGolongan()
+{
+    return $this->db->query('SELECT * FROM golongan');
+}
 
-    public function getThl()
-    {
-        return $this->db->query('SELECT * FROM thl');
-    }
+public function getThl($id_perusahaan)
+{
+    return $this->db->query('SELECT * FROM thl WHERE id_perusahaan = ?', array($id_perusahaan));
+}
 
-    public function getPribadi()
-    {
-        return $this->db->query('SELECT * FROM karyawan_pribadi');
-    }
+public function getPribadi($id_perusahaan)
+{
+    return $this->db->query('SELECT * FROM karyawan_pribadi WHERE id_perusahaan = ?', array($id_perusahaan));
+}
+
 }
 
 /* End of file M_Mpp.php */

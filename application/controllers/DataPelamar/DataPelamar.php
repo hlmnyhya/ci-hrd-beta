@@ -84,6 +84,7 @@ class DataPelamar extends CI_Controller {
 			} else {
 				$file = $this->upload->data('file_name');
 				$id = $this->input->post('id_pelamar');
+				$id_perusahaan 		= $this->input->post('id_perusahaan');
 				$nama = $this->input->post('nama');
 				$alamat = $this->input->post('alamat');
 				$tanggal_lahir = $this->input->post('tanggal_lahir');
@@ -97,6 +98,7 @@ class DataPelamar extends CI_Controller {
 
 				$data = array(
 					'id_pelamar' => $id,
+					'id_perusahaan' => $id_perusahaan,
 					'nama' => $nama,
 					'alamat' => $alamat,
 					'tanggal_lahir' => $tanggal_lahir,
@@ -132,6 +134,7 @@ class DataPelamar extends CI_Controller {
 	{
     // Mendapatkan input data dari form
     $nama = $this->input->post('nama');
+	$id_perusahaan 		= $this->input->post('id_perusahaan');
     $alamat = $this->input->post('alamat');
     $tanggal_lahir = $this->input->post('tanggal_lahir');
     $jenis_kelamin = $this->input->post('jenis_kelamin');
@@ -168,6 +171,7 @@ class DataPelamar extends CI_Controller {
     // Siapkan data untuk diupdate
     $data = array(
         'nama' => $nama,
+		'id_perusahaan' => $id_perusahaan,
         'alamat' => $alamat,
         'tanggal_lahir' => $tanggal_lahir,
         'jenis_kelamin' => $jenis_kelamin,

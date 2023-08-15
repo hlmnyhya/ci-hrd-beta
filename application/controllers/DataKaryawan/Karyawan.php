@@ -13,20 +13,24 @@ class Karyawan extends CI_Controller {
         $this->load->view('templates/footer');
 	}
 
-    public function addKaryawan()
-	{
-		$data['title'] 		= 'Tambah Data Karyawan';
-		$data['karyawan']   = $this->M_karyawan->getKaryawan()->result();
-		$data['divisi'] 	= $this->M_karyawan->getDivisi()->result();
-		$data['jabatan'] 	= $this->M_karyawan->getJabatan()->result();
-		$data['golongan'] 	= $this->M_karyawan->getGolongan()->result();
-		$data['pribadi'] 	= $this->M_karyawan->getPribadi()->result();
-		$this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar');
-        $this->load->view('v_karyawan/karyawan/v_add_karyawan', $data);
-        $this->load->view('templates/footer');
-        $this->load->view('v_karyawan/karyawan/_partials/footer2');
-	}
+   public function addKaryawan()
+{
+    $id_perusahaan = $this->session->userdata('id_perusahaan'); // Ambil id_perusahaan dari session
+
+    $data['title']     = 'Tambah Data Karyawan';
+    $data['karyawan']  = $this->M_karyawan->getKaryawan($id_perusahaan)->result();
+    $data['divisi']    = $this->M_karyawan->getDivisi($id_perusahaan)->result();
+    $data['jabatan']   = $this->M_karyawan->getJabatan($id_perusahaan)->result();
+    $data['golongan']  = $this->M_karyawan->getGolongan()->result();
+    $data['pribadi']   = $this->M_karyawan->getPribadi($id_perusahaan)->result();
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar');
+    $this->load->view('v_karyawan/karyawan/v_add_karyawan', $data);
+    $this->load->view('templates/footer');
+    $this->load->view('v_karyawan/karyawan/_partials/footer2');
+}
+
 
 	public function addKaryawan_proses()
 	{
@@ -44,6 +48,8 @@ class Karyawan extends CI_Controller {
 		$alamat_ktp 		= $this->input->post('alamat_ktp');
 		$alamat_domisili 	= $this->input->post('alamat_domisili');
 		$karyawan_pribadi 	= $this->input->post('karyawan_pribadi');
+		$id_perusahaan = $this->input->post('id_perusahaan');
+
 
 		$data = array(
 			'nama' 				=> $nama,
@@ -60,6 +66,7 @@ class Karyawan extends CI_Controller {
 			'alamat_ktp'		=> $alamat_ktp,
 			'alamat_domisili' 	=> $alamat_domisili,
 			'karyawan_pribadi' 	=> $karyawan_pribadi,
+			'id_perusahaan' 	=> $id_perusahaan,
         );
         
 		$this->db->insert('karyawan', $data);
@@ -69,12 +76,15 @@ class Karyawan extends CI_Controller {
 
     public function editKaryawan($id)
 	{
+		$id_perusahaan = $this->session->userdata('id_perusahaan');
+		
 		$data['title'] 		= 'Ubah Data Karyawan';
-		$data['divisi'] 	= $this->M_karyawan->getDivisi()->result();
-		$data['jabatan'] 	= $this->M_karyawan->getJabatan()->result();
-		$data['golongan'] 	= $this->M_karyawan->getGolongan()->result();
+		$data['karyawan']  = $this->M_karyawan->getKaryawan2($id_perusahaan)->result();
+    	$data['divisi']    = $this->M_karyawan->getDivisi($id_perusahaan)->result();
+    	$data['jabatan']   = $this->M_karyawan->getJabatan($id_perusahaan)->result();
+    	$data['golongan']  = $this->M_karyawan->getGolongan()->result();
+    	$data['pribadi']   = $this->M_karyawan->getPribadi($id_perusahaan)->result();
 		$data['thl'] 		= $this->M_karyawan->getThl()->result();
-		$data['pribadi'] 	= $this->M_karyawan->getPribadi()->result();
 		$data['karyawan'] 	= $this->M_karyawan->update_data($id);
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
@@ -108,6 +118,7 @@ class Karyawan extends CI_Controller {
 		$percobaan_mulai 	= $this->input->post('percobaan_mulai');
 		$percobaan_selesai 	= $this->input->post('percobaan_selesai');
 		$karyawan_pribadi 	= $this->input->post('karyawan_pribadi');
+		$id_perusahaan 		= $this->input->post('id_perusahaan');
 
 		$data = array(
 			'nama' 				=> $nama,
@@ -133,6 +144,7 @@ class Karyawan extends CI_Controller {
 			'percobaan_selesai' => $percobaan_selesai,
 			'percobaan_selesai'	=> $percobaan_selesai,
 			'karyawan_pribadi' 	=> $karyawan_pribadi,
+			'id_perusahaan' 	=> $id_perusahaan,
         );
         
 		$this->db->where('id_karyawan', $id);

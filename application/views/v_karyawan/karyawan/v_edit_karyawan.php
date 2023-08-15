@@ -15,7 +15,9 @@
                 <form action="<?php echo base_url('karyawan/editKaryawan_proses/' . $karyawan['id_karyawan']); ?>" method="post" role="form">
                 
                 <input type="hidden" name="id_karyawan" value="<?= $karyawan['id_karyawan'] ?>">
-
+                <div class="form-group">
+                    <input type="hidden" class="form-control col-md-6" name="id_perusahaan" id="formGroupExampleInput2" placeholder="" value="<?php echo $this->session->userdata('id_perusahaan'); ?>">
+                </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Nama</label>
                     <input type="text" class="form-control col-md-6" name="nama" id="formGroupExampleInput2" placeholder="" value="<?= $karyawan['nama'] ?>">

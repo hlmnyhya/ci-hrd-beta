@@ -30,11 +30,15 @@ class Riwayat extends CI_Controller {
 
     public function addRiwayat()
 	{
-		$data['title'] 	= 'Tambah Data Riwayat';
-        $data['divisi'] 	= $this->M_karyawan->getDivisi()->result();
-		$data['jabatan'] 	= $this->M_karyawan->getJabatan()->result();
-		$data['golongan'] 	= $this->M_karyawan->getGolongan()->result();
-        $data['karyawan'] 	= $this->M_karyawan->getKaryawan2()->result();
+		$id_perusahaan = $this->session->userdata('id_perusahaan');
+
+        $data['title'] 	= 'Tambah Data Riwayat';
+        // $data['karyawan'] 	= $this->M_karyawan->getKaryawan2()->result();
+        $data['karyawan']  = $this->M_karyawan->getKaryawan2($id_perusahaan)->result();
+        $data['divisi']    = $this->M_karyawan->getDivisi($id_perusahaan)->result();
+        $data['jabatan']   = $this->M_karyawan->getJabatan($id_perusahaan)->result();
+        $data['golongan']  = $this->M_karyawan->getGolongan()->result();
+        $data['pribadi']   = $this->M_karyawan->getPribadi($id_perusahaan)->result();
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('Riwayat/v_add_riwayat', $data);
@@ -45,6 +49,7 @@ class Riwayat extends CI_Controller {
 	public function addRiwayat_proses()
 	{
 		$id_karyawan    = $this->input->post('id_karyawan');
+        
         $divisi         = $this->input->post('divisi');
         $divisi_start   = $this->input->post('divisi_start');
         $divisi_end     = $this->input->post('divisi_end');
