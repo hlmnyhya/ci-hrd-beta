@@ -39,35 +39,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no=1; foreach($pribadi as $p) : ?>
-                                    <tr>
-                                        <td><?php echo $no++ ?></td>
-                                        <td><?php echo $p->nama?></td>
-                                        <td><?php echo $p->alamat_ktp?></td>
-                                        <td><?php echo $p->jenis_kelamin?></td>
-                                        <td><?php echo $p->golongan_darah?></td>
-                                        <td><?php echo $p->pendidikan?></td>
-                                        <td>
-                                                            <a href="<?php echo base_url('DataKaryawan/Pribadi/detail/'.$p->id_karyawan_pribadi)?>" class="btn icon btn-primary">
-                                                                <i class="fa fa-user"></i> Detail
-                                                            </a>
-                                                            <br>
-                                                            <a href="<?php echo base_url('DataKaryawan/Pribadi/edit_pribadi/'.$p->id_karyawan_pribadi)?>" class="btn icon btn-warning">
-                                                                <i class="fa fa-edit"></i> Edit Data Pribadi
-                                                            </a>
-                                                            <br>
-                                                            <a href="<?php echo base_url('DataKaryawan/Pribadi/edit_keluarga/'.$p->id_karyawan_pribadi)?>" class="btn icon btn-warning">
-                                                                <i class="fa fa-edit"></i> Edit Data Keluarga
-                                                            </a>
-                                                            <br>
-                                                            <a href="<?php echo base_url('DataKaryawan/Pribadi/delete_data/'.$p->id_karyawan_pribadi)?>" class="btn icon btn-danger">
-                                                                <i class="fa fa-trash"></i> Hapus
-                                                            </a>
-                                                        </td>
-                                    </tr>
-                                     <?php endforeach; ?>
+                                    <?php $no = 1; foreach ($pribadi as $p) : ?>
+                                        <?php if ($p->id_perusahaan == $this->session->userdata('id_perusahaan')) : ?>
+                                            <tr>
+                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo $p->nama ?></td>
+                                                <td><?php echo $p->alamat_ktp ?></td>
+                                                <td><?php echo $p->jenis_kelamin ?></td>
+                                                <td><?php echo $p->golongan_darah ?></td>
+                                                <td><?php echo $p->pendidikan ?></td>
+                                                <!-- <td><?php echo $this->session->userdata('id_perusahaan')?></td> -->
+                                                <td>
+                                                    <a href="<?php echo base_url('DataKaryawan/Pribadi/detail/' . $p->id_karyawan_pribadi) ?>" class="btn icon btn-primary">
+                                                        <i class="fa fa-user"></i> Detail
+                </a>
+                <br>
+                <a href="<?php echo base_url('DataKaryawan/Pribadi/edit_pribadi/' . $p->id_karyawan_pribadi) ?>" class="btn icon btn-warning">
+                    <i class="fa fa-edit"></i> Edit Data Pribadi
+                </a>
+                <br>
+                <a href="<?php echo base_url('DataKaryawan/Pribadi/edit_keluarga/' . $p->id_karyawan_pribadi) ?>" class="btn icon btn-warning">
+                    <i class="fa fa-edit"></i> Edit Data Keluarga
+                </a>
+                <br>
+                <a href="<?php echo base_url('DataKaryawan/Pribadi/delete_data/' . $p->id_karyawan_pribadi) ?>" class="btn icon btn-danger">
+                    <i class="fa fa-trash"></i> Hapus
+                </a>
+            </td>
+        </tr>
+        <?php endif; ?>
+        <?php endforeach; ?>
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>
@@ -75,3 +79,4 @@
         </div>
     </div>
 </div>
+<!-- CA -->

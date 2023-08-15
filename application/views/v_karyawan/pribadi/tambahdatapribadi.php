@@ -15,6 +15,10 @@
                         placeholder="">
                 </div>
                 <div class="form-group">
+                    <!-- <label for="formGroupExampleInput2">Perusahaan</label> -->
+                    <input type="hidden" class="form-control col-md-6" name="id_perusahaan" id="formGroupExampleInput2" placeholder="" value="<?php echo $this->session->userdata('id_perusahaan'); ?>">
+                </div>
+                <div class="form-group">
                     <label for="formGroupExampleInput2">Nama</label>
                     <input type="text" class="form-control col-md-6" name="nama" id="formGroupExampleInput2" placeholder="">
                 </div>

@@ -5,8 +5,14 @@ class M_Karyawan_Pribadi extends CI_Model{
     
 public function show_data()
 {
-    return $this->db->query('SELECT * FROM karyawan_pribadi');
+    $query = $this->db->select('kp.*, p.perusahaan')
+                      ->from('karyawan_pribadi kp')
+                      ->join('perusahaan p', 'kp.id_perusahaan = p.id_perusahaan', 'left')
+                      ->get();
+
+    return $query;
 }
+
 
 public function get_data_by_last()
 {
@@ -16,6 +22,31 @@ public function get_data_by_last()
                     ->limit(1)
                     ->get()
                     ->result();
+}
+
+public function get_pribadi_ca()
+{
+return $this->db->query('SELECT * FROM karyawan_pribadi WHERE id_perusahaan = 1');
+}
+
+public function get_pribadi_la()
+{
+return $this->db->query('SELECT * FROM karyawan_pribadi WHERE id_perusahaan = 2');
+}
+
+public function get_pribadi_plasmabatakan()
+{
+return $this->db->query('SELECT * FROM karyawan_pribadi WHERE id_perusahaan = 3');
+}
+
+public function get_pribadi_plasmkbl()
+{
+return $this->db->query('SELECT * FROM karyawan_pribadi WHERE id_perusahaan = 4');
+}
+
+public function get_pribadi_pks()
+{
+return $this->db->query('SELECT * FROM karyawan_pribadi WHERE id_perusahaan = 5');
 }
 
 

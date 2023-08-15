@@ -100,7 +100,8 @@
                                             <a class="dropdown-toggle" data-toggle="dropdown"><img
                                                     class="img-responsive rounded-circle"
                                                     src="<?php echo base_url();?>assets/images/CA BARU.png"
-                                                    alt="#" /><span class="name_user"> <?php echo $this->session->userdata('username'); ?></a>
+                                                    alt="#" />
+                                                    <span class="name_user"><?php echo $this->session->userdata('username'); ?></span></a>
                                             <div class="dropdown-menu">
                                                 <!-- <a class="dropdown-item" href="<?php echo base_url('myprofile');?>">My
                                                     Profile</a>

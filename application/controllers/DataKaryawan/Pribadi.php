@@ -25,6 +25,7 @@ class Pribadi extends CI_Controller {
 
     $data['title'] = 'Data Pribadi Karyawan';
     $data['keluarga'] = $this->M_Keluarga->show_data()->result();
+	// $data['perusahaan'] = $this->M_perusahaan->show_data()->result();
 
     $this->load->view('templates/header', $data);
     $this->load->view('templates/sidebar');
@@ -47,6 +48,7 @@ class Pribadi extends CI_Controller {
 	public function create_pribadi()
 	{
 		$id = $this->input->post('id_karyawan_pribadi');
+		$id_perusahaan = $this->input->post('id_perusahaan');
 		$nama = $this->input->post('nama');
 		$alamat_ktp = $this->input->post('alamat_ktp');
 		$alamat_domisili = $this->input->post('alamat_domisili');
@@ -60,6 +62,7 @@ class Pribadi extends CI_Controller {
 
         $data = array(
 			'id_karyawan_pribadi' => $id,
+			'id_perusahaan' => $id_perusahaan,
 			'nama' => $nama,
 			'alamat_ktp' => $alamat_ktp,
 			'alamat_domisili' => $alamat_domisili,
@@ -92,6 +95,7 @@ class Pribadi extends CI_Controller {
 	public function edit_data_pribadi()
 	{
 		$id = $this->input->post('id_karyawan_pribadi');
+		$id_perusahaan = $this->input->post('id_perusahaan');
 		$nama = $this->input->post('nama');
 		$alamat_ktp = $this->input->post('alamat_ktp');
 		$alamat_domisili = $this->input->post('alamat_domisili');
@@ -105,6 +109,7 @@ class Pribadi extends CI_Controller {
 
 		$data = array(
 			'id_karyawan_pribadi' => $id,
+			'id_perusahaan' => $id_perusahaan,
 			'nama' => $nama,
 			'alamat_ktp' => $alamat_ktp,
 			'alamat_domisili' => $alamat_domisili,

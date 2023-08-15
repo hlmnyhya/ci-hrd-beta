@@ -27,7 +27,7 @@ class Auth extends CI_Controller {
         }
     }
 
-   private function _login()
+  private function _login()
 {
     $username = $this->input->post('username');
     $password = $this->input->post('password');
@@ -43,7 +43,9 @@ class Auth extends CI_Controller {
             if (md5($password) === $user['password']) {
                 $data = [
                     'username' => $user['username'],
-                    'role_id' => $user['role_id']
+                    'role_id' => $user['role_id'],
+                    'id_perusahaan' => $user['id_perusahaan'],
+                    'perusahaan' => $user['perusahaan']
                 ];
                 $this->session->set_userdata($data);
 
@@ -69,6 +71,7 @@ class Auth extends CI_Controller {
         redirect('auth');
     }
 }
+
 
 
     public function registration() {
