@@ -191,28 +191,37 @@ public function tambah_data_keluarga()
 }
 
 
-	public function create_keluarga()
-	{
-		$id = $this->input->post('id_keluarga');
-		$id_karyawan_pribadi = $this->input->post('id_karyawan_pribadi');
-		$istri = $this->input->post('istri_suami');
-		$anak1 = $this->input->post('anak1');
-		$anak2 = $this->input->post('anak2');
-		$anak3 = $this->input->post('anak3');
+public function create_keluarga()
+{
+    $id = $this->input->post('id_keluarga');
+    $id_karyawan_pribadi = $this->input->post('id_karyawan_pribadi');
+    $istri = $this->input->post('istri_suami');
+    $anak1 = $this->input->post('anak1');
+    $anak2 = $this->input->post('anak2');
+    $anak3 = $this->input->post('anak3');
 
-		$data = array(
-			'id_keluarga' => $id,
-			'id_karyawan_pribadi' => $id_karyawan_pribadi,
-			'istri_suami' => $istri,
-			'anak1' => $anak1,
-			'anak2' => $anak2,
-			'anak3' => $anak3
-		);
+    // Check if the id_keluarga already exists
+    $existing_id = $this->db->where('id_keluarga', $id)->get('keluarga')->row();
+    if ($existing_id) {
+        // If the id already exists, increment it
+        $last_id = $this->db->select_max('id_keluarga')->get('keluarga')->row();
+        $id = $last_id->id_keluarga + 1;
+    }
 
-		$this->M_Keluarga->insert_data('keluarga', $data);
-		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pribadi & Keluarga Berhasil Ditambahkan</div>');
-		redirect('DataKaryawan/Pribadi');
-	}
+    $data = array(
+        'id_keluarga' => $id,
+        'id_karyawan_pribadi' => $id_karyawan_pribadi,
+        'istri_suami' => $istri,
+        'anak1' => $anak1,
+        'anak2' => $anak2,
+        'anak3' => $anak3
+    );
+
+    $this->M_Keluarga->insert_data('keluarga', $data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pribadi & Keluarga Berhasil Ditambahkan</div>');
+    redirect('DataKaryawan/Pribadi');
+}
+
 
 	public function edit_keluarga($id)
 	{
