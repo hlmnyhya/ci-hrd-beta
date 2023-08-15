@@ -46,43 +46,52 @@ class Pribadi extends CI_Controller {
 	}
 
 	public function create_pribadi()
-	{
-		$id = $this->input->post('id_karyawan_pribadi');
-		$id_perusahaan = $this->input->post('id_perusahaan');
-		$nama = $this->input->post('nama');
-		$alamat_ktp = $this->input->post('alamat_ktp');
-		$alamat_domisili = $this->input->post('alamat_domisili');
-		$agama = $this->input->post('agama');
-		$jenis_kelamin = $this->input->post('jenis_kelamin');
-		$pendidikan = $this->input->post('pendidikan');
-		$jurusan = $this->input->post('jurusan');
-		$tanggal_lahir = $this->input->post('tanggal_lahir');
-		$usia = $this->input->post('usia');
-		$goldar = $this->input->post('golongan_darah');
-		$created_at = date('Y-m-d H:i:s');
-		$updated_at = date('Y-m-d H:i:s');
+{
+    $id = $this->input->post('id_karyawan_pribadi');
+    $id_perusahaan = $this->input->post('id_perusahaan');
+    $nama = $this->input->post('nama');
+    $alamat_ktp = $this->input->post('alamat_ktp');
+    $alamat_domisili = $this->input->post('alamat_domisili');
+    $agama = $this->input->post('agama');
+    $jenis_kelamin = $this->input->post('jenis_kelamin');
+    $pendidikan = $this->input->post('pendidikan');
+    $jurusan = $this->input->post('jurusan');
+    $tanggal_lahir = $this->input->post('tanggal_lahir');
+    $usia = $this->input->post('usia');
+    $goldar = $this->input->post('golongan_darah');
+    $created_at = date('Y-m-d H:i:s');
+    $updated_at = date('Y-m-d H:i:s');
 
-        $data = array(
-			'id_karyawan_pribadi' => $id,
-			'id_perusahaan' => $id_perusahaan,
-			'nama' => $nama,
-			'alamat_ktp' => $alamat_ktp,
-			'alamat_domisili' => $alamat_domisili,
-			'agama' => $agama,
-			'jenis_kelamin' => $jenis_kelamin,
-			'pendidikan' => $pendidikan,
-			'jurusan' => $jurusan,
-			'tanggal_lahir' => $tanggal_lahir,
-			'usia' => $usia,
-			'golongan_darah' => $goldar,
-			'created_at' => $created_at,
-			'updated_at' => $updated_at
-        );
+    // Check if the id_karyawan_pribadi already exists
+    $existing_id = $this->db->where('id_karyawan_pribadi', $id)->get('karyawan_pribadi')->row();
+    if ($existing_id) {
+        // If the id already exists, increment it
+        $last_id = $this->db->select_max('id_karyawan_pribadi')->get('karyawan_pribadi')->row();
+        $id = $last_id->id_karyawan_pribadi + 1;
+    }
 
-        $this->M_Karyawan_Pribadi->insert_data('karyawan_pribadi', $data);
-		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pribadi Berhasil Ditambahkan</div>');
-        redirect('DataKaryawan/Pribadi/tambah_data_keluarga');
-	}
+    $data = array(
+        'id_karyawan_pribadi' => $id,
+        'id_perusahaan' => $id_perusahaan,
+        'nama' => $nama,
+        'alamat_ktp' => $alamat_ktp,
+        'alamat_domisili' => $alamat_domisili,
+        'agama' => $agama,
+        'jenis_kelamin' => $jenis_kelamin,
+        'pendidikan' => $pendidikan,
+        'jurusan' => $jurusan,
+        'tanggal_lahir' => $tanggal_lahir,
+        'usia' => $usia,
+        'golongan_darah' => $goldar,
+        'created_at' => $created_at,
+        'updated_at' => $updated_at
+    );
+
+    $this->M_Karyawan_Pribadi->insert_data('karyawan_pribadi', $data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pribadi Berhasil Ditambahkan</div>');
+    redirect('DataKaryawan/Pribadi/tambah_data_keluarga');
+}
+
 
 	public function edit_pribadi($id)
 	{
