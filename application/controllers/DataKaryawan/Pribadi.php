@@ -59,6 +59,8 @@ class Pribadi extends CI_Controller {
 		$tanggal_lahir = $this->input->post('tanggal_lahir');
 		$usia = $this->input->post('usia');
 		$goldar = $this->input->post('golongan_darah');
+		$created_at = date('Y-m-d H:i:s');
+		$updated_at = date('Y-m-d H:i:s');
 
         $data = array(
 			'id_karyawan_pribadi' => $id,
@@ -73,6 +75,8 @@ class Pribadi extends CI_Controller {
 			'tanggal_lahir' => $tanggal_lahir,
 			'usia' => $usia,
 			'golongan_darah' => $goldar,
+			'created_at' => $created_at,
+			'updated_at' => $updated_at
         );
 
         $this->M_Karyawan_Pribadi->insert_data('karyawan_pribadi', $data);
@@ -106,6 +110,9 @@ class Pribadi extends CI_Controller {
 		$tanggal_lahir = $this->input->post('tanggal_lahir');
 		$usia = $this->input->post('usia');
 		$goldar = $this->input->post('golongan_darah');
+		$created_at = date('Y-m-d H:i:s');
+		$updated_at = date('Y-m-d H:i:s');
+
 
 		$data = array(
 			'id_karyawan_pribadi' => $id,
@@ -120,6 +127,8 @@ class Pribadi extends CI_Controller {
 			'tanggal_lahir' => $tanggal_lahir,
 			'usia' => $usia,
 			'golongan_darah' => $goldar,
+			'created_at' => $created_at,
+			'updated_at' => $updated_at
 		);
 
 		$where = array(
