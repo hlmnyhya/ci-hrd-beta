@@ -97,6 +97,7 @@ class Riwayat extends CI_Controller {
 
     public function editRiwayat($id)
 	{
+        		$id_perusahaan = $this->session->userdata('id_perusahaan');
         $data['title'] 	= 'Ubah Data Riwayat';
         $data['karyawan']  = $this->M_karyawan->getKaryawan2($id_perusahaan)->result();
         $data['divisi']    = $this->M_karyawan->getDivisi($id_perusahaan)->result();
