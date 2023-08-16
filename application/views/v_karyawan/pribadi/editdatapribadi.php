@@ -75,6 +75,16 @@
                     <label for="formGroupExampleInput2">Usia</label>
                     <input type="text" class="form-control col-md-6" name="usia" id="formGroupExampleInput2" placeholder="" value="<?php echo $kp->usia?>">
                 </div>
+                 <div class="form-group">
+                    <label for="formGroupExampleInput2">Golongan Darah</label>
+                    <select class="form-control col-md-6" name="golongan_darah" require="true">
+                        <option selected disabled>--Pilih Golongan Darah--</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="AB">AB</option>
+                        <option value="O">O</option>
+                    </select>
+                </div>
                         <br>
                         <td>
                             <a href="<?php echo base_url('DataKaryawan/pribadi')?>"><button
