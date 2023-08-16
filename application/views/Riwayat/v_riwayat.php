@@ -46,9 +46,9 @@
                                         <td><?php echo $r->golongan?></td>
                                         <td><?php echo $r->status?></td>
                                         <td>
-                                            <a href="<?php echo base_url('Riwayat/editRiwayat/'.$r->id_karyawan) ?>"
+                                            <a href="<?php echo base_url('Riwayat/editRiwayat/'.$r->id_riwayat) ?>"
                                                 class="btn icon btn-warning"><i class="fa fa-edit"></i></a>
-                                            <a href="<?php echo base_url('Riwayat/deleteRiwayat/'.$r->id_karyawan)?>"
+                                            <a href="<?php echo base_url('Riwayat/deleteRiwayat/'.$r->id_riwayat)?>"
                                                 class="btn icon btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
