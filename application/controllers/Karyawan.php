@@ -106,15 +106,7 @@ class Karyawan extends CI_Controller {
 		$status_ptkp 		= $this->input->post('status_ptkp');
 		$alamat_ktp 		= $this->input->post('alamat_ktp');
 		$alamat_domisili 	= $this->input->post('alamat_domisili');
-		$pkwt_mulai 		= $this->input->post('pkwt_mulai');
-		$pkwt_selesai 		= $this->input->post('pkwt_selesai');
-		$pkwt2_mulai 		= $this->input->post('pkwt2_mulai');
-		$pkwt2_selesai 		= $this->input->post('pkwt2_selesai');
-		$tht 				= $this->input->post('tht');
-		$thl 				= $this->input->post('thl');
-		$percobaan_mulai 	= $this->input->post('percobaan_mulai');
-		$percobaan_selesai 	= $this->input->post('percobaan_selesai');
-		$id_perusahaan 		= $this->input->post('id_perusahaan');
+		$id_perusahaan = $this->input->post('id_perusahaan');
 
 		$data = array(
 			'nama' 				=> $nama,
@@ -130,15 +122,6 @@ class Karyawan extends CI_Controller {
 			'status_ptkp' 		=> $status_ptkp,
 			'alamat_ktp'		=> $alamat_ktp,
 			'alamat_domisili' 	=> $alamat_domisili,
-			'pkwt_mulai'		=> $pkwt_mulai,
-			'pkwt_selesai' 		=> $pkwt_selesai,
-			'pkwt2_mulai'		=> $pkwt2_mulai,
-			'pkwt2_selesai' 	=> $pkwt2_selesai,
-			'tht'				=> $tht,
-			'thl' 				=> $thl,
-			'percobaan_mulai'	=> $percobaan_mulai,
-			'percobaan_selesai' => $percobaan_selesai,
-			'percobaan_selesai'	=> $percobaan_selesai,
 			'id_perusahaan' 	=> $id_perusahaan,
         );
         

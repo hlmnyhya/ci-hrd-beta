@@ -12,7 +12,7 @@
         
         <div id="layoutSidenav_content">
             <main>
-                <form action="<?php echo base_url('karyawan/editKaryawan_proses/' . $karyawan['id_karyawan']); ?>" method="post" role="form">
+                <form action="<?php echo base_url('Karyawan/editKaryawan_proses/' . $karyawan['id_karyawan']); ?>" method="post" role="form">
                 
                 <input type="hidden" name="id_karyawan" value="<?= $karyawan['id_karyawan'] ?>">
                 <div class="form-group">
