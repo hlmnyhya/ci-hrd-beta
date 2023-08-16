@@ -10,7 +10,7 @@
         <div id="layoutSidenav_content">
             <?php foreach ($pelamar as $p) : ?>
             <main>
-               <form action="<?php echo base_url('DataPelamar/datapelamar/edit_data'); ?>" method="post" role="form" enctype="multipart/form-data">
+               <form action="<?php echo base_url('DataPelamar/DataPelamar/edit_data'); ?>" method="post" role="form" enctype="multipart/form-data">
                <div class="form-group">
                     <input type="hidden" class="form-control col-md-6" name="id_perusahaan" id="formGroupExampleInput2" placeholder="" value="<?php echo $this->session->userdata('id_perusahaan'); ?>">
                 </div>
