@@ -50,18 +50,20 @@
                                                 <td><?php echo $p->pendidikan ?></td>
                                                 <!-- <td><?php echo $this->session->userdata('id_perusahaan')?></td> -->
                                                 <td>
-                                                    <a href="<?php echo base_url('DataKaryawan/Pribadi/detail/' . $p->id_karyawan_pribadi) ?>" class="btn icon btn-primary">
-                                                        <i class="fa fa-user"></i> Detail
+                                                   <a href="<?= base_url('DataKaryawan/Pribadi/detail/' . $p->id_karyawan_pribadi) ?>" class="btn icon btn-primary" title="View Employee Details">
+    <i class="fa fa-user"></i>&nbsp;Detail
+</a>
+
                 </a>
                 <br>
                 <a href="<?php echo base_url('DataKaryawan/Pribadi/edit_pribadi/' . $p->id_karyawan_pribadi) ?>" class="btn icon btn-warning">
-                    <i class="fa fa-edit"></i> Edit Data Pribadi
+                    <i class="fa fa-edit"></i> Edit
                 </a>
                 <br>
-                <a href="<?php echo base_url('DataKaryawan/Pribadi/edit_keluarga/' . $p->id_karyawan_pribadi) ?>" class="btn icon btn-warning">
+                <!-- <a href="<?php echo base_url('DataKaryawan/Pribadi/edit_keluarga/' . $p->id_karyawan_pribadi) ?>" class="btn icon btn-warning">
                     <i class="fa fa-edit"></i> Edit Data Keluarga
                 </a>
-                <br>
+                <br> -->
                 <a href="<?php echo base_url('DataKaryawan/Pribadi/delete_data/' . $p->id_karyawan_pribadi) ?>" class="btn icon btn-danger">
                     <i class="fa fa-trash"></i> Hapus
                 </a>

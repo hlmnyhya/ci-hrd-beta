@@ -167,10 +167,14 @@ class Pribadi extends CI_Controller {
 	public function detail($id_karyawan_pribadi)
 	{
 		$data['title'] = 'Detail Data Pribadi Karyawan';
-		$data['karyawan_pribadi'] = $this->db->query("SELECT kp.`id_karyawan_pribadi`, kp.`nama`, kp.`alamat_ktp`, kp.`alamat_domisili`, kp.`agama`, kp.`jenis_kelamin`, kp.`pendidikan`, kp.`jurusan`, kp.`tanggal_lahir`, kp.`usia`, kp.`golongan_darah`, k.`id_keluarga`, k.`istri_suami`, k.`anak1`, k.`anak2`, k.`anak3`
+		$data['karyawan_pribadi'] = $this->db->query("SELECT kp.`id_karyawan_pribadi`, kp.`nama`, kp.`alamat_ktp`, kp.`alamat_domisili`, kp.`agama`, kp.`jenis_kelamin`, kp.`pendidikan`, kp.`jurusan`, kp.`tanggal_lahir`, kp.`usia`, kp.`golongan_darah`,
+       k.`id_keluarga`, k.`istri_suami`, k.`anak1`, k.`anak2`, k.`anak3`
 FROM `karyawan_pribadi` AS kp
-JOIN `keluarga` AS k ON kp.`id_karyawan_pribadi` = k.`id_karyawan_pribadi`
-WHERE '$id_karyawan_pribadi LIMIT 1'
+LEFT JOIN `keluarga` AS k ON kp.`id_karyawan_pribadi` = k.`id_karyawan_pribadi`
+WHERE kp.`id_karyawan_pribadi` = '$id_karyawan_pribadi'
+ORDER BY kp.`created_at` DESC
+LIMIT 1;
+
 ")->result();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
@@ -226,8 +230,8 @@ public function create_keluarga()
 	public function edit_keluarga($id)
 	{
 		$data['title'] = 'Edit Data Keluarga Karyawan';
-		$where = array('id_keluarga' => $id);
-		$data['keluarga'] = $this->db->query("SELECT * FROM keluarga WHERE id_keluarga = '$id'")->result();
+		$where = array('id_karyawan_pribadi' => $id);
+		$data['keluarga'] = $this->db->query("SELECT * FROM keluarga WHERE id_karyawan_pribadi = '$id'")->result();
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
 		$this->load->view('Master/Keluarga/editdatakeluarga', $data);

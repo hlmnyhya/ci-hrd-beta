@@ -3,21 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Karyawan extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
 	public function index()
 	{
 		$data['title'] = 'Data Karyawan';
@@ -28,22 +13,27 @@ class Karyawan extends CI_Controller {
         $this->load->view('templates/footer');
 	}
 
-    public function addKaryawan()
-	{
-		$data['title'] 		= 'Tambah Data Karyawan';
-		$data['divisi'] 	= $this->M_karyawan->getDivisi()->result();
-		$data['jabatan'] 	= $this->M_karyawan->getJabatan()->result();
-		$data['golongan'] 	= $this->M_karyawan->getGolongan()->result();
-		$data['pribadi'] 	= $this->M_karyawan->getPribadi()->result();
-		$this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar');
-        $this->load->view('v_karyawan/karyawan/v_add_karyawan', $data);
-        $this->load->view('templates/footer');
-	}
+   public function addKaryawan()
+{
+    $id_perusahaan = $this->session->userdata('id_perusahaan'); // Ambil id_perusahaan dari session
+
+    $data['title']     = 'Tambah Data Karyawan';
+    $data['karyawan']  = $this->M_karyawan->getKaryawan($id_perusahaan)->result();
+    $data['divisi']    = $this->M_karyawan->getDivisi($id_perusahaan)->result();
+    $data['jabatan']   = $this->M_karyawan->getJabatan($id_perusahaan)->result();
+    $data['golongan']  = $this->M_karyawan->getGolongan()->result();
+    $data['pribadi']   = $this->M_karyawan->getPribadi($id_perusahaan)->result();
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar');
+    $this->load->view('v_karyawan/karyawan/v_add_karyawan', $data);
+    $this->load->view('templates/footer');
+    $this->load->view('v_karyawan/karyawan/_partials/footer2');
+}
+
 
 	public function addKaryawan_proses()
 	{
-		$id_karyawan 		= $this->input->post('id_karyawan');
 		$nama 				= $this->input->post('nama');
 		$tgl_masuk 			= $this->input->post('tgl_masuk');
 		$masa_kerja 		= $this->input->post('masa_kerja');
@@ -57,9 +47,10 @@ class Karyawan extends CI_Controller {
 		$status_ptkp 		= $this->input->post('status_ptkp');
 		$alamat_ktp 		= $this->input->post('alamat_ktp');
 		$alamat_domisili 	= $this->input->post('alamat_domisili');
+		$id_perusahaan = $this->input->post('id_perusahaan');
+
 
 		$data = array(
-			'id_karyawan' 		=> $id_karyawan,
 			'nama' 				=> $nama,
 			'tgl_masuk'			=> $tgl_masuk,
 			'masa_kerja' 		=> $masa_kerja,
@@ -73,27 +64,31 @@ class Karyawan extends CI_Controller {
 			'status_ptkp' 		=> $status_ptkp,
 			'alamat_ktp'		=> $alamat_ktp,
 			'alamat_domisili' 	=> $alamat_domisili,
+			'id_perusahaan' 	=> $id_perusahaan,
         );
         
 		$this->db->insert('karyawan', $data);
-        redirect('karyawan');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Karyawan Berhasil Ditambahkan</div>');
+        redirect('Karyawan');
 	}
 
     public function editKaryawan($id)
 	{
+		$id_perusahaan = $this->session->userdata('id_perusahaan');
+		
 		$data['title'] 		= 'Ubah Data Karyawan';
-		$data['divisi'] 	= $this->M_karyawan->getDivisi()->result();
-		$data['jabatan'] 	= $this->M_karyawan->getJabatan()->result();
-		$data['golongan'] 	= $this->M_karyawan->getGolongan()->result();
+		$data['karyawan']  = $this->M_karyawan->getKaryawan2($id_perusahaan)->result();
+    	$data['divisi']    = $this->M_karyawan->getDivisi($id_perusahaan)->result();
+    	$data['jabatan']   = $this->M_karyawan->getJabatan($id_perusahaan)->result();
+    	$data['golongan']  = $this->M_karyawan->getGolongan()->result();
+    	$data['pribadi']   = $this->M_karyawan->getPribadi($id_perusahaan)->result();
 		$data['thl'] 		= $this->M_karyawan->getThl()->result();
-		$data['pribadi'] 	= $this->M_karyawan->getPribadi()->result();
-		$data['karyawan_pribadi'] 	= $this->M_karyawan->getKaryawan2();
 		$data['karyawan'] 	= $this->M_karyawan->update_data($id);
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('v_karyawan/karyawan/v_edit_karyawan', $data);
         $this->load->view('templates/footer');
-		$this->load->view('karyawan/_partials/footer2');
+		$this->load->view('v_karyawan/karyawan/_partials/footer2');
 	}
 
 	public function editKaryawan_proses($id)
@@ -120,6 +115,7 @@ class Karyawan extends CI_Controller {
 		$thl 				= $this->input->post('thl');
 		$percobaan_mulai 	= $this->input->post('percobaan_mulai');
 		$percobaan_selesai 	= $this->input->post('percobaan_selesai');
+		$id_perusahaan 		= $this->input->post('id_perusahaan');
 
 		$data = array(
 			'nama' 				=> $nama,
@@ -144,10 +140,12 @@ class Karyawan extends CI_Controller {
 			'percobaan_mulai'	=> $percobaan_mulai,
 			'percobaan_selesai' => $percobaan_selesai,
 			'percobaan_selesai'	=> $percobaan_selesai,
+			'id_perusahaan' 	=> $id_perusahaan,
         );
         
 		$this->db->where('id_karyawan', $id);
 		$this->db->update('karyawan', $data);
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Karyawan Berhasil Diubah</div>');
         redirect('karyawan');
 	}
 
@@ -156,4 +154,5 @@ class Karyawan extends CI_Controller {
 		$this->M_karyawan->delete_data($id_karyawan);
         redirect(base_url('karyawan'));
 	}
+
 }
