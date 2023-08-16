@@ -38,7 +38,7 @@
                                 </thead>
                                 <tbody>
                                     <?php $no=1; foreach($riwayat as $r) : ?>
-                                          <?php if ($k->id_perusahaan == $this->session->userdata('id_perusahaan')) : ?>
+                                          <?php if ($r->id_perusahaan == $this->session->userdata('id_perusahaan')) : ?>
                                     <tr>
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $r->nama?></td>
