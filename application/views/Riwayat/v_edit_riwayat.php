@@ -17,7 +17,9 @@
             <main>
                 <form action="<?php echo base_url('Riwayat/addRiwayat_proses'); ?>" method="post" role="form">
                 <input type="hidden" name="id_karyawan" value="<?= $riwayat['id_karyawan'] ?>">
-                
+                <div class="form-group">
+                    <input type="hidden" class="form-control col-md-6" name="id_perusahaan" id="formGroupExampleInput2" placeholder="" value="<?php echo $this->session->userdata('id_perusahaan'); ?>">
+                </div>
                 <label for="formGroupExampleInput2">Nama Karyawan</label>
                 <div class="form-control">
                     <select class="col-md-12 select2" aria-label="Default select example" name="id_karyawan" value="<?= $karyawan['id_karyawan'] ?>" >
