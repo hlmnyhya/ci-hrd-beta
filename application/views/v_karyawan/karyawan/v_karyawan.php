@@ -40,6 +40,7 @@
                                 </thead>
                                 <tbody>
                                     <?php $no=1; foreach($karyawan as $k) : ?>
+                                    <?php if ($k->id_perusahaan == $this->session->userdata('id_perusahaan')) : ?>
                                     <tr>
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $k->nama?></td>
@@ -55,6 +56,7 @@
                                                 class="btn icon btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
+                                    <?php endif; ?>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>

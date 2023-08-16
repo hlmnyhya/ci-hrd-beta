@@ -49,7 +49,7 @@ class Riwayat extends CI_Controller {
 	public function addRiwayat_proses()
 	{
 		$id_karyawan    = $this->input->post('id_karyawan');
-        
+        $id_perusahaan 		= $this->input->post('id_perusahaan');
         $divisi         = $this->input->post('divisi');
         $divisi_start   = $this->input->post('divisi_start');
         $divisi_end     = $this->input->post('divisi_end');
@@ -77,6 +77,7 @@ class Riwayat extends CI_Controller {
             'status'            => $status,
             'status_start'      => $status_start,
             'status_end'        => $status_end,
+            'id_perusahaan'     => $id_perusahaan,
         );
         
 		$this->db->insert('riwayat', $data);
@@ -127,6 +128,7 @@ class Riwayat extends CI_Controller {
         $status         = $this->input->post('status');
         $status_start   = $this->input->post('status_start');
         $status_end     = $this->input->post('status_end');
+        $id_perusahaan 		= $this->input->post('id_perusahaan');
 
 		$data = array(
 			'id_karyawan'       => $id_karyawan,
@@ -142,6 +144,7 @@ class Riwayat extends CI_Controller {
             'status'            => $status,
             'status_start'      => $status_start,
             'status_end'        => $status_end,
+            'id_perusahaan'     => $id_perusahaan,
         );
         
 		$this->db->where('id_riwayat', $id);

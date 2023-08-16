@@ -14,7 +14,7 @@
                                     src="<?php echo base_url();?>assets/images/CA BARU.png" alt="#" />
                             </div>
                             <div class="user_info">
-                                <h6>admin</h6>
+                                <h6><?php echo $this->session->userdata('username'); ?></h6>
                                 <p><span class="online_animation"></span> Online</p>
                             </div>
                         </div>
