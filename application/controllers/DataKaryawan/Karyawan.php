@@ -108,16 +108,9 @@ class Karyawan extends CI_Controller {
 		$status_ptkp 		= $this->input->post('status_ptkp');
 		$alamat_ktp 		= $this->input->post('alamat_ktp');
 		$alamat_domisili 	= $this->input->post('alamat_domisili');
-		$pkwt_mulai 		= $this->input->post('pkwt_mulai');
-		$pkwt_selesai 		= $this->input->post('pkwt_selesai');
-		$pkwt2_mulai 		= $this->input->post('pkwt2_mulai');
-		$pkwt2_selesai 		= $this->input->post('pkwt2_selesai');
-		$tht 				= $this->input->post('tht');
-		$thl 				= $this->input->post('thl');
-		$percobaan_mulai 	= $this->input->post('percobaan_mulai');
-		$percobaan_selesai 	= $this->input->post('percobaan_selesai');
 		$karyawan_pribadi 	= $this->input->post('karyawan_pribadi');
-		$id_perusahaan 		= $this->input->post('id_perusahaan');
+		$id_perusahaan = $this->input->post('id_perusahaan');
+
 
 		$data = array(
 			'nama' 				=> $nama,

@@ -29,6 +29,7 @@
                             <!-- column contact -->
                             <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 profile_details margin_bottom_30">
                                 <?php foreach ($pelamar as $p) : ?>
+                                      <?php if ($p->id_perusahaan == $this->session->userdata('id_perusahaan')) : ?>
                                     <main>
                                         <div class="contact_blog">
                                             <div class="contact_inner">
@@ -60,6 +61,7 @@
                                             </div>
                                         </div>
                                     </main>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </div>
                         </div>
