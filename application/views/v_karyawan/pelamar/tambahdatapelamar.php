@@ -13,7 +13,7 @@
 				<div class="form-group">
                     <input type="hidden" class="form-control col-md-6" name="id_perusahaan" id="formGroupExampleInput2" placeholder="" value="<?php echo $this->session->userdata('id_perusahaan'); ?>">
                 </div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 						<label for="perusahaan">Perusahaan</label>
 						<select id="perusahaan" class="form-control col-md-6" name="id_perusahaan">
 							<option selected disabled>Pilih Perusahaan</option>
@@ -21,33 +21,29 @@
 								<option value="<?= $p['id_perusahaan']; ?>"><?= $p['perusahaan']; ?></option>
 							<?php endforeach; ?>
 						</select>
-					</div>
+					</div> -->
 
-					<div class="form-group">
-						<label for="divisi">Divisi</label>
-						<select id="divisi" class="form-control" name="id_divisi">
-							<option value="">--Pilih Divisi--</option>
-						</select>
-					</div>
-				
+				<label for="formGroupExampleInput2">Divisi</label>
+                 <div class="form-control" style="width: 835px;">
+                    <select class="form-control col-md-6 select2 " aria-label="Default select example" name="divisi">
+                        <option selected disabled>------ Pilih Divisi -----</option>
+                        <?php foreach($divisi as $d) { ?>
+                        <option value="<?= $d->id_divisi ?>"><?= $d->divisi?></option>
+                        <?php } ?>
+                    </select>
+                </div>
 					<div class="form-group">
 						<input type="hidden" class="form-control col-md-6" name="id_pelamar" id="formGroupExampleInput2" placeholder="">
-					</div>
-					
-					<div class="form-group">
-						<label for="formGroupExampleInput2">Perusahaan</label>
-						<input type="text" class="form-control col-md-6" name="perusahaan" id="formGroupExampleInput2" placeholder="">
-					</div>
-
-					<div class="form-group">
-						<label for="formGroupExampleInput2">Divisi</label>
-						<input type="text" class="form-control col-md-6" name="divisi" id="formGroupExampleInput2" placeholder="">
-					</div>
-
-					<div class="form-group">
-						<label for="formGroupExampleInput2">Jabatan</label>
-						<input type="text" class="form-control col-md-6" name="jabatan" id="formGroupExampleInput2" placeholder="">
-					</div>
+						</div>
+					 <label for="formGroupExampleInput2">Jabatan</label>
+                <div class="form-control" style="max-width: 835px;">
+                    <select class="form-control col-md-6 select2" aria-label="Default select example" name="jabatan">
+                        <option selected disabled>----- Pilih Jabatan -----</option>
+                        <?php foreach($jabatan as $j) { ?>
+                        <option value="<?= $j->id_jabatan ?>"><?= $j->jabatan?></option>
+                        <?php } ?>
+                    </select>
+                </div>
 
 					<div class="form-group">
 						<label for="formGroupExampleInput2">Nama</label>

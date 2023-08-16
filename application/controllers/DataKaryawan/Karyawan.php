@@ -84,7 +84,6 @@ class Karyawan extends CI_Controller {
     	$data['jabatan']   = $this->M_karyawan->getJabatan($id_perusahaan)->result();
     	$data['golongan']  = $this->M_karyawan->getGolongan()->result();
     	$data['pribadi']   = $this->M_karyawan->getPribadi($id_perusahaan)->result();
-		$data['thl'] 		= $this->M_karyawan->getThl()->result();
 		$data['karyawan'] 	= $this->M_karyawan->update_data($id);
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');

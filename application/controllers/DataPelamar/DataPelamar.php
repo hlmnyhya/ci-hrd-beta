@@ -50,8 +50,11 @@ class DataPelamar extends CI_Controller {
 
 	public function tambah_data_pelamar()
 	{
+				$id_perusahaan = $this->session->userdata('id_perusahaan');
 		$data['title'] = 'Tambah Data Pelamar';
 		$data['perusahaan'] = $this->M_perusahaan->getDataPerusahaan();
+		$data['divisi']    = $this->M_karyawan->getDivisi($id_perusahaan)->result();
+		    	$data['jabatan']   = $this->M_karyawan->getJabatan($id_perusahaan)->result();
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('v_karyawan/pelamar/tambahdatapelamar', $data);
