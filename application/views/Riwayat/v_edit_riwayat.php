@@ -15,7 +15,7 @@
         <div id="layoutSidenav_content">
 
             <main>
-                <form action="<?php echo base_url('Riwayat/editRiwayat_proses'.$riwayat['id_riwayat']); ?>); ?>" method="post" role="form">
+                <form action="<?php echo base_url('Riwayat/editRiwayat_proses'.$riwayat['id_riwayat']); ?>" method="post" role="form">
                 <input type="hidden" name="id_karyawan" value="<?= $riwayat['id_karyawan'] ?>">
                 <div class="form-group">
                     <input type="hidden" class="form-control col-md-6" name="id_perusahaan" id="formGroupExampleInput2" placeholder="" value="<?php echo $this->session->userdata('id_perusahaan'); ?>">
