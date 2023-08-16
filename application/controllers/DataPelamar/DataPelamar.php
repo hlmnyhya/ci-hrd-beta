@@ -94,7 +94,6 @@ class DataPelamar extends CI_Controller {
 				$jenis_kelamin = $this->input->post('jenis_kelamin');
 				$no_telp = $this->input->post('no_telp');
 				$email = $this->input->post('email');
-				$perusahaan = $this->input->post('perusahaan');
 				$divisi = $this->input->post('divisi');
 				$jabatan = $this->input->post('jabatan');
 				$created_at = date('Y-m-d');
@@ -108,7 +107,6 @@ class DataPelamar extends CI_Controller {
 					'jenis_kelamin' => $jenis_kelamin,
 					'no_telp' => $no_telp,
 					'email' => $email,
-					'perusahaan' => $perusahaan,
 					'divisi' => $divisi,
 					'jabatan' => $jabatan,
 					'file' => $file,
@@ -143,7 +141,6 @@ class DataPelamar extends CI_Controller {
     $jenis_kelamin = $this->input->post('jenis_kelamin');
     $no_telp = $this->input->post('no_telp');
     $email = $this->input->post('email');
-	$perusahaan = $this->input->post('perusahaan');
 	$divisi = $this->input->post('divisi');
 	$jabatan = $this->input->post('jabatan');
 
@@ -180,7 +177,6 @@ class DataPelamar extends CI_Controller {
         'jenis_kelamin' => $jenis_kelamin,
         'no_telp' => $no_telp,
         'email' => $email,
-		'perusahaan' => $perusahaan,
 		'divisi' => $divisi,
 		'jabatan' => $jabatan,
         'file' => $file
