@@ -4,11 +4,11 @@
                        <div class="row column_title">
                            <div class="col-md-12">
                                <div class="page_title">
-                                   <h2>DASHBOARD PLASMA BATAKAN</h2>
+                                   <h2>DASHBOARD PLASMA SM KBL</h2>
                                </div>
                            </div>
                        </div>
-                     <div class="row column1">
+                      <div class="row column1">
                            <div class="col-md-8 col-lg-4">
                                <div class="full counter_section margin_bottom_30">
                                    <div class="couter_icon">

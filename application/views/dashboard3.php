@@ -8,8 +8,8 @@
                                </div>
                            </div>
                        </div>
-                       <!-- <div class="row column1">
-                           <div class="col-md-6 col-lg-3">
+                      <div class="row column1">
+                           <div class="col-md-8 col-lg-4">
                                <div class="full counter_section margin_bottom_30">
                                    <div class="couter_icon">
                                        <div>
@@ -18,87 +18,88 @@
                                    </div>
                                    <div class="counter_no">
                                        <div>
-                                           <p class="total_no">334</p>
-                                           <p class="head_couter">Usia</p>
+                                           <p class="total_no"><?= $jumlah_karyawan ?></p>
+                                           <p class="head_couter">Jumlah Karyawan</p>
                                        </div>
                                    </div>
                                </div>
                            </div>
-                           <div class="col-md-6 col-lg-3">
+                           <div class="col-md-8 col-lg-4">
                                <div class="full counter_section margin_bottom_30">
                                    <div class="couter_icon">
                                        <div>
-                                           <i class="fa fa-mortar-board blue1_color"></i>
+                                           <i class="fa fa-group blue1_color"></i>
 
                                        </div>
                                    </div>
                                    <div class="counter_no">
                                        <div>
-                                           <p class="total_no">334</p>
-                                           <p class="head_couter">Pendidikan</p>
+                                           <p class="total_no"><?= $jumlah_mutasi?></p>
+                                           <p class="head_couter">Riwayat Mutasi</p>
                                        </div>
                                    </div>
                                </div>
                            </div>
-                           <div class="col-md-6 col-lg-3">
-                               <div class="full counter_section margin_bottom_30">
-                                   <div class="couter_icon">
-                                       <div>
-                                           <i class="fa fa-users green_color"></i>
-                                       </div>
-                                   </div>
-                                   <div class="counter_no">
-                                       <div>
-                                           <p class="total_no">342</p>
-                                           <p class="head_couter">Jenis Kelamin</p>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="col-md-6 col-lg-3">
-                               <div class="full counter_section margin_bottom_30">
-                                   <div class="couter_icon">
-                                       <div>
+                           <div class="col-md-8 col-lg-4">
+                              <div class="full counter_section margin_bottom_30">
+                                 <div class="couter_icon">
+                                    <div>
                                            <i class="fa fa-sign-out   red_color"></i>
-                                       </div>
+                                          </div>
                                    </div>
                                    <div class="counter_no">
-                                       <div>
-                                           <p class="total_no">338</p>
-                                           <p class="head_couter">Karyawan Keluar</p>
-                                       </div>
+                                      <div>
+                                           <p class="total_no"><?= $jumlah_pelamar ?></p>
+                                           <p class="head_couter">Jumlah Pelamar</p>
+                                          </div>
                                    </div>
-                               </div>
+                                 </div>
                            </div>
-                           </div> -->
+                           </div>
 
-                           <!-- graph
-                           <div class="row column2 graph margin_bottom_30">
-                               <div class="col-md-l2 col-lg-12">
-                                   <div class="white_shd full">
-                                       <div class="full graph_head">
-                                           <div class="heading1 margin_0">
-                                               <h2>HEADCOUNT</h2>
-                                           </div>
-                                       </div>
-                                       <div class="full graph_revenue">
-                                           <div class="row">
-                                               <div class="col-md-12">
-                                                   <div class="content">
-                                                       <div class="area_chart">
-                                                           <canvas height="120" id="canvas"></canvas>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div> -->
+                           <div class="row column2">
+                              <div class="col-md-4">
+                                 <div class="white_shd full margin_bottom_30">
+                                    <div class="full graph_head">
+                                       <div class="heading1 margin_0">
+               <h2>Usia</h2>
+            </div>
+        </div>
+        <div class="full progress_bar_inner">
+            <canvas id="ageChart"></canvas>
+         </div>
+      </div>
+   </div>
 
-                           <div class="row column3">
-                               <div class="col-md-4">
-                           <div class="white_shd full">
+<div class="col-md-4">
+    <div class="white_shd full margin_bottom_30">
+        <div class="full graph_head">
+            <div class="heading1 margin_0">
+                <h2>Pendidikan</h2>
+            </div>
+        </div>
+        <div class="full progress_bar_inner">
+            <canvas id="educationChart"></canvas>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="white_shd full margin_bottom_30">
+        <div class="full graph_head">
+            <div class="heading1 margin_0">
+                <h2>Jenis Kelamin</h2>
+            </div>
+        </div>
+        <div class="full progress_bar_inner">
+            <canvas id="genderChart"></canvas>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="row column3">
+<div class="col-md-4">
+   <div class="white_shd full">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
                                     <h2>Usia</h2>

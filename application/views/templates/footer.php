@@ -113,6 +113,105 @@ $('.form-check-input').on('click', function() {
     });
 </script>
 
+<!-- dashboard -->
+<script>
+    // Data usia dan jumlahnya
+    var ageData = {
+        labels: ["18-25 Tahun", "26-35 Tahun", "36-46 Tahun", "47-56 Tahun", "> 56 Tahun"],
+        datasets: [{
+            data: [<?= $jumlah_1825 ?>, <?= $jumlah_2635 ?>, <?= $jumlah_3646 ?>, <?= $jumlah_4756 ?>, <?= $jumlah_56 ?>],
+            backgroundColor: [
+                '#FF5733',
+                '#FFC300',
+                '#36A2EB',
+                '#4CAF50',
+                '#9B59B6'
+            ]
+        }]
+    };
+
+    // Inisialisasi grafik pie chart
+    var ctx = document.getElementById('ageChart').getContext('2d');
+    var ageChart = new Chart(ctx, {
+        type: 'pie',
+        data: ageData,
+        options: {
+            responsive: true,
+            legend: {
+                position: 'bottom'
+            }
+        }
+    });
+</script>
+<script>
+    // Data pendidikan dan jumlahnya
+    var educationData = {
+        labels: ["S2", "S1", "D1/D2/D3", "SMA/SMK/MA", "SMP/MTS", "SD", "TIDAK SEKOLAH"],
+        datasets: [{
+            data: [
+                <?= $jumlah_pend['S2'] ?>,
+                <?= $jumlah_pend['S1'] ?>,
+                <?= $jumlah_pend['D1/D2/D3'] ?>,
+                <?= $jumlah_pend['SMA/SMK/MA'] ?>,
+                <?= $jumlah_pend['SMP/MTS'] ?>,
+                <?= $jumlah_pend['SD'] ?>,
+                <?= $jumlah_pend['TIDAK SEKOLAH'] ?>
+            ],
+            backgroundColor: [
+                '#FF5733',
+                '#FFC300',
+                '#36A2EB',
+                '#4CAF50',
+                '#9B59B6',
+                '#F39C12',
+                '#E74C3C'
+            ]
+        }]
+    };
+
+    // Inisialisasi grafik pie chart untuk pendidikan
+    var educationCtx = document.getElementById('educationChart').getContext('2d');
+    var educationChart = new Chart(educationCtx, {
+        type: 'pie',
+        data: educationData,
+        options: {
+            responsive: true,
+            legend: {
+                position: 'bottom'
+            }
+        }
+    });
+</script>
+<script>
+    // Data jenis kelamin dan jumlahnya
+    var genderData = {
+        labels: ["Lak-Laki", "Perempuan"],
+        datasets: [{
+            data: [
+                <?= $jumlah_jk['laki-laki'] ?>,
+                <?= $jumlah_jk['perempuan'] ?>
+            ],
+            backgroundColor: [
+                '#3498DB',
+                '#E74C3C'
+            ]
+        }]
+    };
+
+    // Inisialisasi grafik pie chart untuk jenis kelamin
+    var genderCtx = document.getElementById('genderChart').getContext('2d');
+    var genderChart = new Chart(genderCtx, {
+        type: 'pie',
+        data: genderData,
+        options: {
+            responsive: true,
+            legend: {
+                position: 'bottom'
+            }
+        }
+    });
+</script>
+
  </body>
 
  </html>

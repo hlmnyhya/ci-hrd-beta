@@ -40,7 +40,7 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; foreach ($pribadi as $p) : ?>
-                                        <?php if ($p->id_perusahaan == $this->session->userdata('id_perusahaan')) : ?>
+                                        <?php if ($this->session->userdata('role_id') === '1' || $p->id_perusahaan == $this->session->userdata('id_perusahaan')) : ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
                                                 <td><?php echo $p->nama ?></td>

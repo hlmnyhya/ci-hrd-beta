@@ -2,7 +2,23 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
     
 class M_dashboard extends CI_Model{
+
+
+    public function getJumlahKaryawan()
+    {
+        return $this->db->count_all_results('karyawan_pribadi');
+    }
+
+    public function getJumlahMutasi()
+    {
+        return $this->db->count_all_results('riwayat');
+    }
     
+    public function getJumlahPelamar()
+    {
+        return $this->db->count_all_results('pelamar');
+    }
+
     public function getJumlahKaryawanPerJenisKelamin()
     {
         // Mendapatkan jumlah data karyawan dengan jenis kelamin laki-laki

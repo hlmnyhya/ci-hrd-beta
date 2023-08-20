@@ -60,7 +60,7 @@ class Mpp extends CI_Controller {
         );
 
         $this->M_Mpp->insert_data('mpp', $data);
-        redirect('mpp/mpp');
+        redirect('Mpp/mpp');
     }
 
 	public function edit_data()
@@ -88,7 +88,7 @@ class Mpp extends CI_Controller {
 		);
 
 		$this->M_Mpp->update_data('mpp', $data, $where);
-		redirect('mpp/mpp'); // Change 'komoditas' to 'mpp' if that's the correct redirection URL
+		redirect('Mpp/mpp'); // Change 'komoditas' to 'mpp' if that's the correct redirection URL
 	}
 
 	public function delete($id = NULL)

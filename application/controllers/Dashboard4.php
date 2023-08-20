@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Dashboard4 extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,7 +18,6 @@ class Dashboard extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
-
 	public function __construct() {
         parent::__construct();
         // is_logged_in();
@@ -29,13 +28,9 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] 			= 'Dashboard | PT. Candi Artha';
+		$data['title'] 			= 'Dashboard | Plasma SM KBL';
         $data['menu'] 			= $this->db->get('user_menu')->result_array();
 		$data['subMenu'] 		= $this->menu->getSubMenu();
-
-		$data['jumlah_karyawan'] = $this->M_dashboard->getJumlahKaryawan();
-		$data['jumlah_mutasi'] 	= $this->M_dashboard->getJumlahMutasi();
-		$data['jumlah_pelamar'] = $this->M_dashboard->getJumlahPelamar();
 
 		$data['jumlah_jk'] 		= $this->M_dashboard->getJumlahKaryawanPerJenisKelamin();
 		$data['jumlah_pend'] 	= $this->M_dashboard->getJumlahKaryawanPerPendidikan();
@@ -48,7 +43,7 @@ class Dashboard extends CI_Controller {
 
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
-        $this->load->view('dashboard', $data);
+        $this->load->view('dashboard4', $data);
         $this->load->view('templates/footer');
 	}
 }
