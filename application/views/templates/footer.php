@@ -79,6 +79,10 @@ var ps = new PerfectScrollbar('#sidebar');
     new DataTable('#thl');
  </script>
 
+  <script>
+    new DataTable('#pelamar');
+ </script>
+
  <script>
 
 $('.custom-file-input').on('change', function() {

@@ -3,7 +3,7 @@
         <div class="row column_title">
             <div class="col-md-12">
                 <div class="page_title">
-                    <h2>TAMBAH DATA PELAMAR</h2>
+                    <h2>EDIT DATA PELAMAR</h2>
                 </div>
             </div>
         </div>

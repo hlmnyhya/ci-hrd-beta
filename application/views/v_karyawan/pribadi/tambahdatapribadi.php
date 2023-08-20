@@ -95,5 +95,6 @@
                          <button type="submit" class="btn btn-primary btn-">Next <i class="fa fa-arrow-circle-right"></i></button>
                         </td>
                         </form>
+                        
             </main>
         </div>

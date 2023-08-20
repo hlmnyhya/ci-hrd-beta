@@ -13,16 +13,6 @@
 				<div class="form-group">
                     <input type="hidden" class="form-control col-md-6" name="id_perusahaan" id="formGroupExampleInput2" placeholder="" value="<?php echo $this->session->userdata('id_perusahaan'); ?>">
                 </div>
-				<!-- <div class="form-group">
-						<label for="perusahaan">Perusahaan</label>
-						<select id="perusahaan" class="form-control col-md-6" name="id_perusahaan">
-							<option selected disabled>Pilih Perusahaan</option>
-							<?php foreach ($perusahaan as $p): ?>
-								<option value="<?= $p['id_perusahaan']; ?>"><?= $p['perusahaan']; ?></option>
-							<?php endforeach; ?>
-						</select>
-					</div> -->
-
 				<label for="formGroupExampleInput2">Divisi</label>
                  <div class="form-control" style="width: 835px;">
                     <select class="form-control col-md-6 select2 " aria-label="Default select example" name="divisi">
