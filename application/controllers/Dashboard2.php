@@ -32,6 +32,10 @@ class Dashboard2 extends CI_Controller {
         $data['menu'] 			= $this->db->get('user_menu')->result_array();
 		$data['subMenu'] 		= $this->menu->getSubMenu();
 
+		$data['jumlah_karyawan'] = $this->M_dashboard->getJumlahKaryawan();
+		$data['jumlah_mutasi'] 	= $this->M_dashboard->getJumlahMutasi();
+		$data['jumlah_pelamar'] = $this->M_dashboard->getJumlahPelamar();
+		
 		$data['jumlah_jk'] 		= $this->M_dashboard->getJumlahKaryawanPerJenisKelamin();
 		$data['jumlah_pend'] 	= $this->M_dashboard->getJumlahKaryawanPerPendidikan();
 
