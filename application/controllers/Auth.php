@@ -63,6 +63,8 @@ class Auth extends CI_Controller {
                     redirect('dashboard3');
                 } elseif ($user['role_id'] == 3) {
                     redirect('dashboard2');
+                } elseif ($user['role_id'] == 6) {
+                    redirect ('dashboard4');
                 } else {
                     redirect('dashboard');
                 }
