@@ -33,18 +33,18 @@ class Dashboard extends CI_Controller {
         $data['menu'] 			= $this->db->get('user_menu')->result_array();
 		$data['subMenu'] 		= $this->menu->getSubMenu();
 
-		$data['jumlah_karyawan'] = $this->M_dashboard->getJumlahKaryawan();
-		$data['jumlah_mutasi'] 	= $this->M_dashboard->getJumlahMutasi();
-		$data['jumlah_pelamar'] = $this->M_dashboard->getJumlahPelamar();
+		$data['jumlah_karyawan'] = $this->M_dashboard->getJumlahKaryawanCA();
+		$data['jumlah_mutasi'] 	= $this->M_dashboard->getJumlahMutasiCA();
+		$data['jumlah_pelamar'] = $this->M_dashboard->getJumlahPelamarCA();
 
-		$data['jumlah_jk'] 		= $this->M_dashboard->getJumlahKaryawanPerJenisKelamin();
-		$data['jumlah_pend'] 	= $this->M_dashboard->getJumlahKaryawanPerPendidikan();
+		$data['jumlah_jk'] 		= $this->M_dashboard->getJumlahKaryawanPerJenisKelaminCA();
+		$data['jumlah_pend'] 	= $this->M_dashboard->getJumlahKaryawanPerPendidikanCA();
 
-		$data['jumlah_1825'] 	= $this->M_dashboard->getJumlahKaryawanUsia1825();
-		$data['jumlah_2635'] 	= $this->M_dashboard->getJumlahKaryawanUsia2635();
-		$data['jumlah_3646'] 	= $this->M_dashboard->getJumlahKaryawanUsia3646();
-		$data['jumlah_4756'] 	= $this->M_dashboard->getJumlahKaryawanUsia4756();
-		$data['jumlah_56'] 		= $this->M_dashboard->getJumlahKaryawanUsia56();
+		$data['jumlah_1825'] 	= $this->M_dashboard->getJumlahKaryawanUsia1825CA();
+		$data['jumlah_2635'] 	= $this->M_dashboard->getJumlahKaryawanUsia2635CA();
+		$data['jumlah_3646'] 	= $this->M_dashboard->getJumlahKaryawanUsia3646CA();
+		$data['jumlah_4756'] 	= $this->M_dashboard->getJumlahKaryawanUsia4756CA();
+		$data['jumlah_56'] 		= $this->M_dashboard->getJumlahKaryawanUsia56CA();
 
 		$this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
