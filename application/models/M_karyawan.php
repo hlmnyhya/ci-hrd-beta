@@ -62,7 +62,12 @@ public function getJabatan($id_perusahaan)
 
 public function getGolongan()
 {
-    return $this->db->query('SELECT * FROM golongan');
+    return $this->db->query('SELECT id_golongan, golongan
+FROM golongan
+ORDER BY
+    CAST(golongan AS UNSIGNED),
+    RIGHT(golongan, 1);
+');
 }
 
 public function getThl($id_perusahaan)

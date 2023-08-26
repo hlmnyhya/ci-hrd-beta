@@ -5,7 +5,17 @@ class M_golongan extends CI_Model{
     
     public function show_data()
     {
-        return $this->db->query('SELECT * FROM golongan');
+        return $this->db->query('SELECT G.id_golongan, G.golongan, J.nominal
+FROM golongan G
+LEFT JOIN (
+    SELECT id_gaji, id_golongan, nominal
+    FROM gaji
+) J ON G.id_golongan = J.id_golongan
+ORDER BY
+    CAST(G.golongan AS UNSIGNED),
+    RIGHT(G.golongan, 1);
+
+');
     }
 
     public function get_data($table){

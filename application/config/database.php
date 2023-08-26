@@ -80,7 +80,7 @@ $db['default'] = array(
 	'username' => 'root',
 	'password' => '',
 	'database' => 'ca_hrd2',
-	'dbdriver' => 'mysqli',
+	'dbdriver' => 'mysqli',	
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

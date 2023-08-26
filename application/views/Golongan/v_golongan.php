@@ -29,6 +29,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Golongan</th>
+                                        <th>Gaji</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -37,6 +38,7 @@
                                     <tr>
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $g->golongan?></td>
+                                        <td><?php echo $g->nominal?></td>
                                         <td>
                                             <a href="<?php echo base_url('golongan/editGolongan/'.$g-> id_golongan)?>"
                                                 class="btn icon btn-warning"><i class="fa fa-edit"></i></a>

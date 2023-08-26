@@ -53,6 +53,7 @@
                     <label for="formGroupExampleInput2">Pendidikan</label>
                     <select class="form-control col-md-6" name="pendidikan" require="true">
                         <option selected disabled>--Pilih Pendidikan--</option>
+                        <option value="Tidak Sekolah">Tidak Sekolah</option>
                         <option value="SD Sederajat">SD Sederajat</option>
                         <option value="SMP/SLTP Sederajat">SMP/SLTP Sederajat</option>
                         <option value="SMA/SMK/SLTA Sederajat">SMA/SMK/SLTA Sederajat</option>
