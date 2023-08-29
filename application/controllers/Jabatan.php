@@ -43,12 +43,16 @@ class Jabatan extends CI_Controller {
 
 	public function addJabatan_proses()
 	{
+		$id_jabatan			= $this->input->post('id_jabatan');
 		$jabatan = $this->input->post('jabatan');
 		$id_divisi = $this->input->post('id_divisi');
+		$id_perusahaan = $this->input->post('id_perusahaan');
 
 		$data = array(
-			'id_divisi' => $id_divisi,
+			'id_jabatan' => $id_jabatan,
 			'jabatan' => $jabatan,
+			'id_divisi' => $id_divisi,
+			'id_perusahaan' => $id_perusahaan,
         );
         
 		$this->db->insert('jabatan', $data);

@@ -13,7 +13,9 @@
         <div id="layoutSidenav_content">
             <main>
                 <form action="<?php echo base_url('jabatan/addJabatan_proses'); ?>" method="post" role="form">
-                
+
+                <input type="hidden" name="id_jabatan" value="">
+
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Jabatan</label>
                     <input type="text" class="form-control col-md-6" name="jabatan" id="formGroupExampleInput2" placeholder="">
@@ -25,6 +27,16 @@
                         <option selected disabled>--Pilih Divisi--</option>
 						<?php foreach($divisi as $d) : ?>
 							<option value="<?= $d->id_divisi ?>"><?= $d->divisi ?></option>
+						<?php endforeach ?>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Perusahaan</label>
+                    <select class="form-control col-md-6" name="id_perusahaan" require="true">
+                        <option selected disabled>--Pilih Perusahaan--</option>
+						<?php foreach($perusahaan as $p) : ?>
+							<option value="<?= $p->id_perusahaan ?>"><?= $p->perusahaan ?></option>
 						<?php endforeach ?>
                     </select>
                 </div>
